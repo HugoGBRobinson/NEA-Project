@@ -1,0 +1,7 @@
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\bin\Debug\Vectors.exe.config
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\bin\Debug\Vectors.exe
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\bin\Debug\Vectors.pdb
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\obj\Debug\Vectors.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\obj\Debug\Vectors.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\obj\Debug\Vectors.exe
+\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Vectors\Vectors\obj\Debug\Vectors.pdb
