@@ -7,19 +7,20 @@ using System.Windows.Media.Media3D;
 
 namespace Vectors
 {
-    public class Protons
+    public class Anti_Proton
     {
         public int Charge { get; set; }
-        public Vector3D Position { get; set;}
+        public Vector3D Position { get; set; }
         public double RestMass { get; set; }
         public double Velocity { get; set; }
 
-        public Protons(double x,double y,double z,int charge, double restMass, double veloctiy )
+        public Anti_Proton(double x, double y, double z, int charge, double restMass, double velocity)
         {
-             Position = new Vector3D(x, y, z);
+            Position = new Vector3D(x, y, z);
             Charge = charge;
             RestMass = restMass;
-            Velocity = veloctiy;
+            Velocity = velocity;
+
         }
     }
 }

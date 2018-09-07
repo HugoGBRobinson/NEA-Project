@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User Interface", "User Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejection + Movement tests", "UnitTestProject1\Ejection + Movement tests.csproj", "{07D9D6B1-C12E-42B2-8ECB-0060C30C6CC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collision", "Collision\Collision.csproj", "{8E4D3F60-0137-4020-976E-F4EBD6C8CB49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{07D9D6B1-C12E-42B2-8ECB-0060C30C6CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D9D6B1-C12E-42B2-8ECB-0060C30C6CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D9D6B1-C12E-42B2-8ECB-0060C30C6CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4D3F60-0137-4020-976E-F4EBD6C8CB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4D3F60-0137-4020-976E-F4EBD6C8CB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4D3F60-0137-4020-976E-F4EBD6C8CB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4D3F60-0137-4020-976E-F4EBD6C8CB49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

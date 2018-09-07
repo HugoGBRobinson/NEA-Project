@@ -7,14 +7,14 @@ using System.Windows.Media.Media3D;
 
 namespace Vectors  //Vectors and randomised ejection
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             var ProtonList = new List<Protons>();
 
-            ProtonList.Add(new Protons(2, 3, 1, 1));
-            ProtonList.Add(new Protons(4, -2, 2, 1));
+            ProtonList.Add(new Protons(2, 3, 1, 1,1.1,1));
+            ProtonList.Add(new Protons(4, -2, 2, 1,1.1,1));
 
             var CompVectors = DistanceBetweenTwoPoints(ProtonList);
             Console.WriteLine(CompVectors);
@@ -35,7 +35,7 @@ namespace Vectors  //Vectors and randomised ejection
             return LengthOfNewvectorStructure2;
         }
 
-        static Vector3D Ejection(IRandomNumberGenerator RNG)
+        public static Vector3D Ejection(IRandomNumberGenerator RNG)
         {
             var EjectionDirection = new Vector3D();
 
