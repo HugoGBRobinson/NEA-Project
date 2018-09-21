@@ -8,10 +8,14 @@ namespace Particle
 {
    public  class Electron : Lepton
     {
-        public bool ClassCompleted { get; set; }
-        public Electron()
+       
+        public Electron(double velocity)
         {
-            ClassCompleted = false;
+           
+            RelativeCharge = 1 / 2000;
+            LeptonNumber = 1;
+            RestMass = 9.109 * Math.Pow(10, -31);
+            Velocity = velocity;
         }
     }
 }

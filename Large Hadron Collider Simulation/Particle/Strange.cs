@@ -11,7 +11,9 @@ namespace Particle
         public bool ClassCompleted { get; set; }
         public Strange()
         {
-            ClassCompleted = false;
+            Charge = -1 / 3;
+            Strangeness = -1;
+            ClassCompleted = true;
         }
     }
 }

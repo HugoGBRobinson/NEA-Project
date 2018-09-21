@@ -13,7 +13,7 @@ namespace Particle
         {
             Charge = (2 / 3);
             Strangeness = 0;
-            ClassCompleted = false;
+            ClassCompleted = true;
         }
     }
 }

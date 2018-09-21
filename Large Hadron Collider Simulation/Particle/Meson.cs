@@ -8,13 +8,10 @@ namespace Particle
 {
     public abstract class Meson : Baryon
     {
-        public int Quark { get; set; } //Quark
-        public int AntiQuark { get; set; }//Quark
-        public Meson(double restMass, int relativeCharge, double velocity)
-        {
-            RestMass = restMass;
-            RelativeCharge = relativeCharge;
-            Velocity = velocity;
-        }
+        public Quark Quark { get; set; } //Quark
+        public Quark AntiQuark { get; set; }//Quark
+        public int Strangness { get; set; }
+        public int UnkonownPropety { get; set; }
+
     }
 }

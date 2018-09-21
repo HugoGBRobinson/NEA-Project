@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Particle
 {
-    public class Lepton : Particle
+    public abstract class Lepton : Particle
     {
-
+        public int LeptonNumber { get; set; }
     }
 }

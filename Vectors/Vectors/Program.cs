@@ -13,8 +13,8 @@ namespace Vectors  //Vectors and randomised ejection
         {
             var ProtonList = new List<Protons>();
 
-            ProtonList.Add(new Protons(2, 3, 1, 1,1.1,1));
-            ProtonList.Add(new Protons(4, -2, 2, 1,1.1,1));
+            ProtonList.Add(new Protons(2, 3, 1, 1,1));
+            ProtonList.Add(new Protons(4, -2, 2, 1,1));
 
             var CompVectors = DistanceBetweenTwoPoints(ProtonList);
             Console.WriteLine(CompVectors);
@@ -33,7 +33,7 @@ namespace Vectors  //Vectors and randomised ejection
             var LengthOfNewvectorStructure = NewVectorStructure.Length;
             var LengthOfNewvectorStructure2 = (Proton1.Position - Proton2.Position).Length;
             return LengthOfNewvectorStructure2;
-        }
+        } 
 
         public static Vector3D Ejection(IRandomNumberGenerator RNG)
         {

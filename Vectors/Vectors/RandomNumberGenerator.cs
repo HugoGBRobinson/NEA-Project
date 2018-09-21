@@ -33,6 +33,17 @@ namespace Vectors
             return RandomNumberArray;
 
         }
+
+        public static int[] RandomNumberOutput()
+        {
+            Random random = new Random();
+            var randomNumber = new int[1] { random.Next(360) };
+
+            return  randomNumber;
+
+        }
+
+
     }
 
     public class ProgramableRandomeNumbergenerator : IRandomNumberGenerator

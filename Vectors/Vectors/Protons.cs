@@ -14,12 +14,14 @@ namespace Vectors
         public double RestMass { get; set; }
         public double Velocity { get; set; }
 
-        public Protons(double x,double y,double z,int charge, double restMass, double veloctiy )
+
+        public Protons(double x,double y,double z,int charge, double veloctiy )
         {
              Position = new Vector3D(x, y, z);
             Charge = charge;
-            RestMass = restMass;
+            RestMass = 1.6726219 * Math.Pow(10, -27);
             Velocity = veloctiy;
         }
+
     }
 }

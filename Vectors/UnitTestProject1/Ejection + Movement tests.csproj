@@ -56,14 +56,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Particles UI\Particles UI.csproj">
-      <Project>{3066d833-3875-4012-8e2e-5c60de21159e}</Project>
-      <Name>Particles UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\User Interface\User Interface.csproj">
-      <Project>{a8e4f605-a6a3-450c-b541-2ad991ab3b73}</Project>
-      <Name>User Interface</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Vectors\Vectors.csproj">
       <Project>{e998f4fb-d962-48ec-b3dc-cd16742ab987}</Project>
       <Name>Vectors</Name>

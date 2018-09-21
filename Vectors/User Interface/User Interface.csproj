@@ -49,9 +49,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Particles UI\Particles UI.csproj">
-      <Project>{3066d833-3875-4012-8e2e-5c60de21159e}</Project>
-      <Name>Particles UI</Name>
+    <ProjectReference Include="..\Collision\Collision.csproj">
+      <Project>{8e4d3f60-0137-4020-976e-f4ebd6c8cb49}</Project>
+      <Name>Collision</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vectors\Vectors.csproj">
       <Project>{e998f4fb-d962-48ec-b3dc-cd16742ab987}</Project>

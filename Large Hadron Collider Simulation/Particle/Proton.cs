@@ -8,17 +8,17 @@ namespace Particle
 {
     public class Proton : Hadron
     {
-        public Boolean ClassCompleted { get; set; }
-        public Proton(double restMass, double velocity,bool spin)
+
+        public Proton(double velocity,bool spin)
         {
-            RestMass = restMass;
+            RestMass = 1.6726219 * Math.Pow(10, -27);
             RelativeCharge = 1;
             Velocity = velocity;
             Quark1 = new Up();
             Quark2 = new Up();
             Quark3 = new Down();
-            ClassCompleted = true;
             Spin = spin;
+            BaryonNumber = 1;
 
         }
 

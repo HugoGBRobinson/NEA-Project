@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace Collision  //To test an easy collision I will start with anialation (Particle + anti-particle = 2 photons)
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -15,14 +12,20 @@ namespace Collision  //To test an easy collision I will start with anialation (P
 
         }
 
-        static void Anialation(Vectors.Protons Particle, Vectors.Anti_Proton AntiParticle) // Simple collision
+        public static Vectors.Photon[] Anialation(Vectors.Protons Particle, Vectors.Anti_Proton AntiParticle) // Simple collision
         {
             var TotalRestMass = Particle.RestMass + AntiParticle.RestMass;
             var TotalParticleVelocity = Particle.Velocity + AntiParticle.Velocity;
 
             var TotalEnergy = MassToEnergy(TotalRestMass) + VelocityToEnergy(TotalParticleVelocity, TotalRestMass); //This energy will be split between the two photons
 
+            //var Ejection = Vectors.Program.Ejection(Vectors.IRandomNumberGenerator);
 
+            var P1 = new Vectors.Photon(TotalEnergy / 2);
+            var P2 = new Vectors.Photon(TotalEnergy / 2);
+
+            var EjectedParticleList = new Vectors.Photon[2] { P1, P2 };
+            return EjectedParticleList;
 
         }
 

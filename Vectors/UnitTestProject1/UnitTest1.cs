@@ -15,7 +15,7 @@ namespace UnitTestProject1
             Vectors.IRandomNumberGenerator RNG;
             RNG = new Vectors.ProgramableRandomeNumbergenerator(1);
 
-            Vector3D EjectionAndPosition = new Protons(10, 5, 19, 1,1,1).Position + Vectors.Program.Ejection(RNG);
+            Vector3D EjectionAndPosition = new Protons(10, 5, 19, 1,1).Position + Vectors.Program.Ejection(RNG);
 
             var x = Math.Truncate(EjectionAndPosition.X);
             var y = Math.Truncate(EjectionAndPosition.Y);

@@ -5,4 +5,7 @@
 /Vectors/.vs/Vectors/v15/Server/sqlite3/db.lock
 /Large Hadron Collider Simulation/.vs/Large Hadron Collider Simulation/v15/Server/sqlite3/db.lock
 /Large Hadron Collider Simulation/.vs/Large Hadron Collider Simulation/v15/Server/sqlite3
-/Large Hadron Collider Simulation/packages
+**/packages
+**/bin
+**/obj
+

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace User_Interface
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -19,6 +19,15 @@ namespace User_Interface
             if (userChoice == 1)
             {
                 RNG = new Vectors.TrueRandomeNumbergenerator();
+                var ParticleArray = Collision.Program.Anialation(new Vectors.Protons(1,1,1,20,20), new Vectors.Anti_Proton(1, 1, 1, 20, 20));
+                foreach (var item in ParticleArray)
+                {
+                    Console.WriteLine(item);
+                    Console.WriteLine("The energy of the particle is " + item.Energy + " J");
+                    Console.WriteLine("The velocity of the particle is" + item.Velocity + " m/s");
+                    Console.WriteLine("");
+                }
+
             }
             else if (userChoice == 2)
             {

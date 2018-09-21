@@ -11,7 +11,9 @@ namespace Particle
         public Boolean ClassCompleted { get; set; }
         public Botton()
         {
-            ClassCompleted = false;
+            Charge = -1 / 3;
+            Strangeness = 0;
+            ClassCompleted = true;
         }
     }
 }

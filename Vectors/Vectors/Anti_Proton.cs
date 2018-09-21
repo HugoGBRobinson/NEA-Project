@@ -14,11 +14,11 @@ namespace Vectors
         public double RestMass { get; set; }
         public double Velocity { get; set; }
 
-        public Anti_Proton(double x, double y, double z, int charge, double restMass, double velocity)
+        public Anti_Proton(double x, double y, double z, int charge,  double velocity)
         {
             Position = new Vector3D(x, y, z);
             Charge = charge;
-            RestMass = restMass;
+            RestMass = 1.6726219 * Math.Pow(10, -27);
             Velocity = velocity;
 
         }

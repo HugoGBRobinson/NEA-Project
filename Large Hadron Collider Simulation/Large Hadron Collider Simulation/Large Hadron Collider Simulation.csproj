@@ -48,5 +48,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Collisions\Collisions.csproj">
+      <Project>{5d45d8bb-af84-4fa5-a7b7-d212333da488}</Project>
+      <Name>Collisions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Particle\ParticleProgram.csproj">
+      <Project>{4ea6b460-5542-4e16-9b13-3a51c2af640b}</Project>
+      <Name>ParticleProgram</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

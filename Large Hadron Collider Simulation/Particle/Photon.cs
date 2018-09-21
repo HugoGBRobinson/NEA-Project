@@ -8,10 +8,14 @@ namespace Particle
 {
     public class Photon : Lepton
     {
-        public bool ClassCompleted { get; set; }
-        public Photon()
+        
+        public double Energy { get; set; }
+        public Photon(double energy)
         {
-            ClassCompleted = false;
+           
+            Velocity = 3 * Math.Pow(10, 8);
+            Energy = energy;
+
         }
 
     }

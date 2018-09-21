@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Particle;
 
 namespace ParticleProgramTests
 {
@@ -12,12 +13,21 @@ namespace ParticleProgramTests
             [TestMethod]
             public void ProtonTest()
             {
-                Assert.AreEqual(true, new Particle.Proton(1, 1,true).ClassCompleted);
+
+                var p = new Proton(1, true);
+
+                Assert.AreEqual(1.6726219 * Math.Pow(10, -27), p.RestMass);
+                Assert.AreEqual(1, p.RelativeCharge);
+                Assert.AreEqual(1, p.BaryonNumber);
             }
             [TestMethod]
             public void NeutronTest()
             {
-                Assert.AreEqual(true, new Particle.Neutron(1, 1,true).ClassCompleted);
+                var n = new Neutron(1, true);
+                Assert.AreEqual(1.674929 * Math.Pow(10, -27), n.RestMass);
+                Assert.AreEqual(0, n.RelativeCharge);
+                Assert.AreEqual(1, n.BaryonNumber);
+
             }
            
         }
@@ -39,32 +49,44 @@ namespace ParticleProgramTests
         [TestMethod]
         public void UpTest()
         {
-            Assert.AreEqual(true, new Particle.Up().ClassCompleted);
+            var up = new Up();
+            Assert.AreEqual((2 / 3), up.Charge);
+            Assert.AreEqual(0, up.Strangeness);
         }
         [TestMethod]
         public void DownTest()
         {
-            Assert.AreEqual(true, new Particle.Down().ClassCompleted);
+            var down = new Down();
+            Assert.AreEqual(-(1/3), down.Charge);
+            Assert.AreEqual(0, down.Strangeness);
         }
         [TestMethod]
         public void TopTest()
         {
-            Assert.AreEqual(true, new Particle.Top().ClassCompleted);
+            var top= new Top();
+            Assert.AreEqual((2 / 3), top.Charge);
+            Assert.AreEqual(0, top.Strangeness);
         }
         [TestMethod]
         public void BottomTest()
         {
-            Assert.AreEqual(true, new Particle.Botton().ClassCompleted);
+            var bottom = new Botton();
+            Assert.AreEqual(-(1 / 3), bottom.Charge);
+            Assert.AreEqual(0, bottom.Strangeness);
         }
         [TestMethod]
         public void StrangeTest()
         {
-            Assert.AreEqual(true, new Particle.Strange().ClassCompleted);
+            var strange = new Strange();
+            Assert.AreEqual(-(1 / 3), strange.Charge);
+            Assert.AreEqual(-1, strange.Strangeness);
         }
         [TestMethod]
         public void CharmTest()
         {
-            Assert.AreEqual(true, new Particle.Charm().ClassCompleted);
+            var charm = new Charm();
+            Assert.AreEqual((2 / 3), charm.Charge);
+            Assert.AreEqual(0, charm.Strangeness);
         }
 
 
@@ -76,12 +98,12 @@ namespace ParticleProgramTests
         [TestMethod]
         public void ElectonTest()
         {
-            Assert.AreEqual(true, new Particle.Electron().ClassCompleted);
+            Assert.Fail();
         }
         [TestMethod]
         public void PhotonTest()
         {
-            Assert.AreEqual(true, new Particle.Photon().ClassCompleted);
+            Assert.Fail();
         }
 
 

@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,10 +57,6 @@
     <ProjectReference Include="..\UnitTestProject1\Ejection + Movement tests.csproj">
       <Project>{07d9d6b1-c12e-42b2-8ecb-0060c30c6cc5}</Project>
       <Name>Ejection + Movement tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\User Interface\User Interface.csproj">
-      <Project>{a8e4f605-a6a3-450c-b541-2ad991ab3b73}</Project>
-      <Name>User Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vectors\Vectors.csproj">
       <Project>{e998f4fb-d962-48ec-b3dc-cd16742ab987}</Project>

@@ -8,11 +8,11 @@ namespace Particle
 {
     public class Down : Quark
     {
-        public Boolean ClassCompleted { get; set; }
+
 
         public Down()
         {
-            ClassCompleted = false;
+
             Charge = -(1 / 3);
             Strangeness = 0;
 
