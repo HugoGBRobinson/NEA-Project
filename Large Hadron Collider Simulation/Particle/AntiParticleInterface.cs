@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Particle
 {
-    class Anti_Strange : Quark
+    public class AntiParticleInterface
     {
+        public interface IAntiparticle<T> where T : Particle { }
 
-        public Anti_Strange()
-        {
-            Charge = 1 / 3;
-            Strangeness = 1;
-
-        }
     }
 }

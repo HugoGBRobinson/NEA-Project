@@ -9,7 +9,7 @@ namespace Particle
     public class Photon : Lepton
     {
         
-        public double Energy { get; set; }
+        public double Energy { get; protected set; }
         public Photon(double energy)
         {
            

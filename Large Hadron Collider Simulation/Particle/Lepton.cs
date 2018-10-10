@@ -8,6 +8,6 @@ namespace Particle
 {
     public abstract class Lepton : Particle
     {
-        public int LeptonNumber { get; set; }
+        public int LeptonNumber { get; protected set; }
     }
 }

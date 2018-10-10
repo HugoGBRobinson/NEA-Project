@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Particle
 {
-    public class Antiproton : Hadron
+    public class Antiproton : Hadron, AntiParticleInterface.IAntiparticle<Proton>
     {
-        public Boolean ClassCompleted { get; set; }
+
         public Antiproton(double velocity, bool spin)
         {
             RestMass = 1.6726219 * Math.Pow(10, -27);
@@ -17,7 +17,7 @@ namespace Particle
             Quark1 = new Anti_Up();
             Quark2 = new Anti_Up();
             Quark3 = new Anti_Down();
-            ClassCompleted = true;
+
             Spin = spin;
             BaryonNumber = 1;
 

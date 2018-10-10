@@ -8,12 +8,12 @@ namespace Particle
 {
     class Anti_Top : Quark
     {
-        public bool ClassCompleted { get; set; }
+
         public Anti_Top()
         {
             Charge = - (2 / 3);
             Strangeness = 0;
-            ClassCompleted = true;
+
         }
     }
 }

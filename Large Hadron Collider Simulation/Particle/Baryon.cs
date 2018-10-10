@@ -8,6 +8,6 @@ namespace Particle
 {
    public abstract class Baryon : Particle
     {
-        public int BaryonNumber { get; set; }
+        public int BaryonNumber { get; protected set; }
     }
 }

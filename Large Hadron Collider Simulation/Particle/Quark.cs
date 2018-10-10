@@ -8,7 +8,7 @@ namespace Particle
 {
     public abstract class Quark
     {
-        public double Charge { get; set; }
-        public double Strangeness { get; set; }
+        public double Charge { get; protected set; }
+        public double Strangeness { get; protected set; }
     }
 }

@@ -46,12 +46,15 @@
     <Compile Include="Anti-Strange.cs" />
     <Compile Include="Anti-Top.cs" />
     <Compile Include="Anti-Up.cs" />
+    <Compile Include="AntiParticleInterface.cs" />
     <Compile Include="Antiproton.cs" />
+    <Compile Include="Atom.cs" />
     <Compile Include="Baryon.cs" />
     <Compile Include="Botton.cs" />
     <Compile Include="Charm.cs" />
     <Compile Include="Down.cs" />
     <Compile Include="Electron.cs" />
+    <Compile Include="ElectronNeutrino.cs" />
     <Compile Include="Hadron.cs" />
     <Compile Include="Lepton.cs" />
     <Compile Include="Meson.cs" />

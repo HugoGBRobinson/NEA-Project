@@ -9,7 +9,7 @@ namespace CollisionTests
         [TestMethod]
         public void AnnialationHappyCaseLowSpeed()
         {
-            var PhotonList = Collisions.Program.Anialation(new Particle.Proton(100, false), new Particle.Antiproton(100, true));
+            var PhotonList = Collisions.CollisionFunctions.Annialation(new Particle.Proton(100, false), new Particle.Antiproton(100, true));
            // Assert.AreEqual(PhotonList[0].Energy,);
         }
     }

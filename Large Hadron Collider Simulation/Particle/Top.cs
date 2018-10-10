@@ -8,12 +8,12 @@ namespace Particle
 {
     public class Top : Quark
     {
-        public bool ClassCompleted { get; set; }
+
         public Top()
         {
             Charge = 2 / 3;
             Strangeness = 0;
-            ClassCompleted = true;
+
         }
     }
 }

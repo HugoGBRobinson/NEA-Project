@@ -8,12 +8,12 @@ namespace Particle
 {
     public class Botton : Quark
     {
-        public Boolean ClassCompleted { get; set; }
+
         public Botton()
         {
             Charge = -1 / 3;
             Strangeness = 0;
-            ClassCompleted = true;
+
         }
     }
 }

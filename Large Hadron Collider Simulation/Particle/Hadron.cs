@@ -8,9 +8,9 @@ namespace Particle
 {
      public abstract class Hadron : Baryon
     {
-        public Quark Quark1 { get; set; } //Quark
-        public Quark Quark2 { get; set; }//Quark
-        public Quark Quark3 { get; set; }//Quark
+        public Quark Quark1 { get; protected set; } //Quark
+        public Quark Quark2 { get; protected set; }//Quark
+        public Quark Quark3 { get; protected set; }//Quark
 
 
     }
