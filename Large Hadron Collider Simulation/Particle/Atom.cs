@@ -3,20 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Quadrivia.FunctionalLibrary;
 
-namespace Particle
+namespace Particles
 {
     public class Atom
     {
         public  int MassNumber { get; protected set; }
-        public  List<Proton> AtomicNumber { get; protected set; }
-        public  List<Neutron> NeutronNumber { get; protected set; }
+        public  FList<Proton> AtomicNumberList { get; protected set; }
+        public  FList<Neutron> NeutronNumberList { get; protected set; }
+        public int AtomicNumber { get; protected set; }
 
-        public Atom(List<Proton> atomicnumber,List<Neutron> neutronnumber, int massnumber)
+        public Atom(FList<Proton> atomicnumberlist,FList<Neutron> neutronnumberlist)
         {
-            MassNumber = massnumber;
-            AtomicNumber = atomicnumber;
-            NeutronNumber = neutronnumber;
+            AtomicNumberList = atomicnumberlist;
+            NeutronNumberList = neutronnumberlist;
+            MassNumber =   FList.Length(NeutronNumberList) -  FList.Length(AtomicNumberList);
+            AtomicNumber = FList.Length(AtomicNumberList);
         }
     }
-}
+
+    //public class Atom
+    //{
+    //    public int MassNumber { get; protected set; }
+    //    public FList<Proton> AtomicNumberList { get; protected set; }
+    //    public FList<Neutron> NeutronNumberList { get; protected set; }
+    //    public int AtomicNumber { get; protected set; }
+
+    //    public Atom(FList<Proton> atomicnumberlist, FList<Neutron> neutronnumberlist, int i)
+    //    {
+    //        AtomicNumberList = atomicnumberlist;
+    //        NeutronNumberList = neutronnumberlist;
+    //        MassNumber = FList.Length(NeutronNumberList) - FList.Length(AtomicNumberList);
+    //        AtomicNumber = FList.Length(AtomicNumberList);
+    //    }
+    }

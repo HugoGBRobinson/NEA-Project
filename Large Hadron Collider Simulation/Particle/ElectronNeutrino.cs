@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle
+namespace Particles
 {
    public class ElectronNeutrino : Lepton
     {
+        public ElectronNeutrino()
+        {
+            FeynmanSymbol = "Ve";
+        }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4EA6B460-5542-4E16-9B13-3A51C2AF640B}</ProjectGuid>
+    <ProjectGuid>{12817AB8-CFFF-449B-AAD3-48AB57513F4C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Particle</RootNamespace>
-    <AssemblyName>Particle</AssemblyName>
+    <RootNamespace>Vectors</RootNamespace>
+    <AssemblyName>Vectors</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Quadrivia.FunctionalLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>C:\Users\HugoRobinson\source\repos\Particle Collision Project\packages\Quadrivia.FunctionalLibrary.1.0.0\lib\net452\Quadrivia.FunctionalLibrary.dll</HintPath>
-    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,38 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Anti-Down.cs" />
-    <Compile Include="Anti-Strange.cs" />
-    <Compile Include="Anti-Top.cs" />
-    <Compile Include="Anti-Up.cs" />
-    <Compile Include="AntiParticleInterface.cs" />
-    <Compile Include="Antiproton.cs" />
-    <Compile Include="Atom.cs" />
-    <Compile Include="Baryon.cs" />
-    <Compile Include="Botton.cs" />
-    <Compile Include="Charm.cs" />
-    <Compile Include="Down.cs" />
-    <Compile Include="Electron.cs" />
-    <Compile Include="ElectronNeutrino.cs" />
-    <Compile Include="Hadron.cs" />
-    <Compile Include="Lepton.cs" />
-    <Compile Include="Meson.cs" />
-    <Compile Include="Neutron.cs" />
-    <Compile Include="Particle.cs" />
-    <Compile Include="Photon.cs" />
-    <Compile Include="Pion+.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proton.cs" />
-    <Compile Include="Quark.cs" />
-    <Compile Include="Strange.cs" />
-    <Compile Include="Top.cs" />
-    <Compile Include="Up.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="ParticleClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Collisions\Collisions.csproj">
+      <Project>{5d45d8bb-af84-4fa5-a7b7-d212333da488}</Project>
+      <Name>Collisions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Particle\ParticleProgram.csproj">
+      <Project>{4ea6b460-5542-4e16-9b13-3a51c2af640b}</Project>
+      <Name>ParticleProgram</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

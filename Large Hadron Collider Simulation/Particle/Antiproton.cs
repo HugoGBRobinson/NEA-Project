@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle
+namespace Particles
 {
     public class Antiproton : Hadron, AntiParticleInterface.IAntiparticle<Proton>
     {
 
-        public Antiproton(double velocity, bool spin)
+        public Antiproton(double velocity)
         {
             RestMass = 1.6726219 * Math.Pow(10, -27);
             RelativeCharge = -1;
@@ -17,10 +17,8 @@ namespace Particle
             Quark1 = new Anti_Up();
             Quark2 = new Anti_Up();
             Quark3 = new Anti_Down();
-
-            Spin = spin;
             BaryonNumber = 1;
-
+            FeynmanSymbol = "AP";
         }
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle
+namespace Particles
 {
     public class Photon : Lepton
     {
@@ -15,6 +15,7 @@ namespace Particle
            
             Velocity = 3 * Math.Pow(10, 8);
             Energy = energy;
+            FeynmanSymbol = "p";
 
         }
 

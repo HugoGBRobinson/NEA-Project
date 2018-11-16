@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle
+namespace Particles
 {
    public  class Electron : Lepton
     {
@@ -16,6 +16,7 @@ namespace Particle
             LeptonNumber = 1;
             RestMass = 9.109 * Math.Pow(10, -31);
             Velocity = velocity;
+            FeynmanSymbol = "e-";
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ParticleProgramTests
             public void ProtonTest()
             {
 
-                var p = new Proton(1, true);
+                var p = new Proton(1);
 
                 Assert.AreEqual(1.6726219 * Math.Pow(10, -27), p.RestMass);
                 Assert.AreEqual(1, p.RelativeCharge);
