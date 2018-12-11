@@ -43,16 +43,7 @@ namespace Vectors
 
         static Vector3D SingularEjection()
         {
-            var EjectionDirection = new Vector3D();
-
-            var Theta = GenerateRandomNumber(0, 360).Item1;
-            var Phi = GenerateRandomNumber(-90, 90).Item1;
-
-            EjectionDirection.X = Math.Cos(Theta);
-            EjectionDirection.Y = Math.Sin(Phi);
-            EjectionDirection.Z = Math.Sin(Theta);
-
-            return EjectionDirection;
+            return new Vector3D(Math.Cos(GenerateRandomNumber(0, 360).Item1), Math.Sin(GenerateRandomNumber(-90, 90).Item1), Math.Sin(GenerateRandomNumber(0, 360).Item1));
         }
 
         public static Tuple<double, uint, uint> GenerateRandomNumber(int u, uint v)

@@ -18,7 +18,7 @@ namespace Particles
         {
             AtomicNumberList = atomicnumberlist;
             NeutronNumberList = neutronnumberlist;
-            MassNumber =   FList.Length(NeutronNumberList) -  FList.Length(AtomicNumberList);
+            MassNumber =   FList.Length(NeutronNumberList) +  FList.Length(AtomicNumberList);
             AtomicNumber = FList.Length(AtomicNumberList);
         }
     }

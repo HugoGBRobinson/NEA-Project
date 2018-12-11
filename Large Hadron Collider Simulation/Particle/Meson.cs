@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace Particles
 {
@@ -13,5 +14,15 @@ namespace Particles
         public int Strangness { get; protected set; }
         public int UnkonownPropety { get; protected set; }
 
+        public Meson(double velocity, Vector3D position) : base (velocity, position)
+        {
+                
+        }
+        public Meson(double velocity) : base (velocity)
+        {
+                
+        }
     }
+
+
 }
