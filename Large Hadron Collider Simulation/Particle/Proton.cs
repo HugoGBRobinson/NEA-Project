@@ -21,6 +21,7 @@ namespace Particles
             FeynmanSymbol = "P";
             Velocity = velocity;
             Position = position;
+            Charge = 19 * Math.Pow(10, -19);
 
         }
         public Proton(double velocity, Vector3D position, double distance) : base(velocity, position, distance)
@@ -35,6 +36,7 @@ namespace Particles
             Velocity = velocity;
             Position = position;
             Distance = distance;
+            Charge = 19 * Math.Pow(10, -19);
 
         }
 
@@ -48,6 +50,7 @@ namespace Particles
             BaryonNumber = 1;
             FeynmanSymbol = "P";
             Velocity = velocity;
+            Charge = 19 * Math.Pow(10, -19);
         }
 
 

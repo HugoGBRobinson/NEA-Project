@@ -16,8 +16,9 @@ namespace Particles
         public Vector3D Position { get;  set; }
         public double Wavelength { get; protected set; }
         public double Frequency { get; protected set; }
-        public DateTime LifeSpan { get; protected set; }
+        public double LifeSpan { get; protected set; }
         public double Distance { get; protected set; }
+        public double Charge { get; protected set; }
 
         public Particle(double velocity, Vector3D position)
         {

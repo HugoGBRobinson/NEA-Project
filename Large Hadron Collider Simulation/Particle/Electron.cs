@@ -9,16 +9,15 @@ namespace Particles
 {
    public  class Electron : Lepton
     {
-        public int Charge { get; set; }
         public Electron(double velocity) : base (velocity)
         {
-            Charge = -1;
-            RelativeCharge = 1 / 2000;
+            RelativeCharge = -1;
             LeptonNumber = 1;
             RestMass = 9.109 * Math.Pow(10, -31);
             Velocity = velocity;
             FeynmanSymbol = "e-";
-  
+            Charge = -19 * Math.Pow(10, -19);
+
         }
 
         public Electron(double velocity,Vector3D position) : base(velocity,position)
@@ -30,6 +29,7 @@ namespace Particles
             Velocity = velocity;
             FeynmanSymbol = "e-";
             Position = position;
+            Charge = -19 * Math.Pow(10, -19);
         }
     }
 }

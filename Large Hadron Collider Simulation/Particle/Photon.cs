@@ -15,17 +15,19 @@ namespace Particles
             Wavelength = wavelength;
             Frequency = frequency;
             FeynmanSymbol = "p";
+            LifeSpan = 10000000000000000000; //To reresent infinaty 
         }
 
         public Photon() : base(3 * Math.Pow(10, 8))
         {
-                
+            LifeSpan = 10000000000000000000;
         }
         public Photon(double wavelength, double frequency, Vector3D position) : base(3 * Math.Pow(10, 8),position)
         {
             Wavelength = wavelength;
             Frequency = frequency;
             FeynmanSymbol = "p";
+            LifeSpan = 10000000000000000000;
         }
         public Photon(double wavelength, double frequency, Vector3D position,double distance) : base(3 * Math.Pow(10, 8), position, distance)
         {
@@ -33,6 +35,7 @@ namespace Particles
             Frequency = frequency;
             FeynmanSymbol = "p";
             Distance = distance;
+            LifeSpan = 10000000000000000000;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Particles
         public  FList<Proton> AtomicNumberList { get; protected set; }
         public  FList<Neutron> NeutronNumberList { get; protected set; }
         public int AtomicNumber { get; protected set; }
+        public string Name { get; protected set; }
 
         public Atom(FList<Proton> atomicnumberlist,FList<Neutron> neutronnumberlist)
         {
@@ -20,6 +21,7 @@ namespace Particles
             NeutronNumberList = neutronnumberlist;
             MassNumber =   FList.Length(NeutronNumberList) +  FList.Length(AtomicNumberList);
             AtomicNumber = FList.Length(AtomicNumberList);
+            Name = ElementNames.FindNameOfElement(AtomicNumber);
         }
     }
 
