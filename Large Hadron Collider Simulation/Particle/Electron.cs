@@ -13,10 +13,10 @@ namespace Particles
         {
             RelativeCharge = -1;
             LeptonNumber = 1;
-            RestMass = 9.109 * Math.Pow(10, -31);
+            RestMass = 9.109E-31;
             Velocity = velocity;
             FeynmanSymbol = "e-";
-            Charge = -19 * Math.Pow(10, -19);
+            Charge = -1.6E-19;
 
         }
 
@@ -25,11 +25,23 @@ namespace Particles
             Charge = -1;
             RelativeCharge = 1 / 2000;
             LeptonNumber = 1;
-            RestMass = 9.109 * Math.Pow(10, -31);
+            RestMass = 9.109E-31;
             Velocity = velocity;
             FeynmanSymbol = "e-";
             Position = position;
-            Charge = -19 * Math.Pow(10, -19);
+            Charge = -1.6E-19;
+        }
+        public Electron(double velocity,Vector3D position, double distance): base(velocity, position, distance)
+        {
+            Charge = -1;
+            RelativeCharge = 1 / 2000;
+            LeptonNumber = 1;
+            RestMass = 9.109E-31;
+            Velocity = velocity;
+            FeynmanSymbol = "e-";
+            Position = position;
+            Charge = -1.6E-19;
+            Distance = distance;
         }
     }
 }

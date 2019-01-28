@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Quadrivia.FunctionalLibrary;
 
 namespace Particles
 {
@@ -36,6 +37,9 @@ namespace Particles
         public static  Dictionary<int,string> NamesOFElements()
         {
             //Dictionary used for finding element names to be changed later 
+
+            //return FList.New("Hydrogen", "Helium")  Need to change the dictionary to an flist and then create an element at function to find the name bassed on its atomic number 
+
 
             var  elements = new Dictionary<int, String>();
             elements.Add(1, "Hydrogen");
