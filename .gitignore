@@ -9,3 +9,7 @@
 **/bin
 **/obj
 
+/Particle Collision Project/.vs/Particle Collision Project/v15/Server/sqlite3/db.lock
+/Particle Collision Project/.vs/Particle Collision Project/v15/Server/sqlite3/storage.ide
+/Particle Collision Project/.vs/Particle Collision Project/v15/Server/sqlite3/storage.ide-shm
+/Particle Collision Project/.vs/Particle Collision Project/v15/Server/sqlite3/storage.ide-wal
