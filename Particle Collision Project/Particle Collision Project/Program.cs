@@ -14,6 +14,9 @@ namespace Particle_Collision_Project
         //Dirty
         static void Main(string[] args)
         {
+            // Need to talk about error hadling, wether it should be in UI or in a seperate thing to seperate it from UI
+                //Answer - User erros should be in the console UI 
+
             bool ContinueLoop = true;
             while (ContinueLoop)
             {
@@ -110,7 +113,7 @@ namespace Particle_Collision_Project
                         Console.WriteLine("Please entre the atomic number of the atom ");
                         int UserInputAtomicNumber = Convert.ToInt32(Console.ReadLine());
                         var ElectronCapture = Collisions.CollisionFuntions.ElectronCaputre(Collisions.CollisionFuntions.AtomCreator(UserInputAtomicNumber, UserInputMassNumber), FirstSeed);
-                        Console.WriteLine("The new atom created is " + Collisions.CollisionFuntions.AtomCreator(UserInputAtomicNumber,UserInputMassNumber).Name + ", and it has an atomic number of " + ElectronCapture.Item1.AtomicNumber + " And a mass number of " + ElectronCapture.Item1.MassNumber);
+                        Console.WriteLine("The new atom created is " + ElectronCapture.Item1.Name + ", and it has an atomic number of " + ElectronCapture.Item1.AtomicNumber + " And a mass number of " + ElectronCapture.Item1.MassNumber);
                         Console.WriteLine("The other particle produced was a " + ElectronCapture.Item2);
                         Console.WriteLine("");
                         break;
@@ -218,9 +221,17 @@ namespace Particle_Collision_Project
                         break;
 
                     case 6:
+                        
+
+
+
+
+
                         Console.WriteLine("");
-                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 0, 0), new Vector3D(10, 0, 0)).Item1.Position);
-                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 0, 0), new Vector3D(10, 0, 0)).Item2.Position);
+                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item1.Position);
+                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item2.Position);
+                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item1.Velocity);
+                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item2.Velocity);
                         Console.WriteLine("");
                         break;
 

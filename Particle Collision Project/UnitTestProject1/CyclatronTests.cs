@@ -11,7 +11,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Electron1000()
         {
-            var Outputs = Collisions.CollisionFuntions.Cyclatron(new Particles.Electron(0), 100, 1000, FRandom.Seed(1,1), 3E-48, 7E-47);
+            var Outputs = Collisions.CollisionFuntions.Cyclatron(new Particles.Electron(0), 100, 1000, FRandom.Seed(1,1), 1E-35, 10);
             Assert.AreEqual(810, FList.Length(Outputs));
 
         }
@@ -66,10 +66,16 @@ namespace UnitTestProject1
             Assert.AreEqual(-351, Outputs.Item2);
         }
         [TestMethod]
-        public void TestCalculateVFromR()
+        public void ChangeNegativeChargeToPositiveTest()
         {
-            var Outputs = Collisions.CollisionFuntions.CalculateVFromR(3E-35, new Particles.Electron(0), 10);
-            Assert.AreEqual(2, Outputs);
+            var Outputs = Collisions.CollisionFuntions.ChangeNegativeChargeToPositive(FList.New(new Particles.Electron(0)));
+            Assert.AreEqual(1.6E-19, FList.Head(Outputs).Charge);
+        }
+        [TestMethod]
+        public void All1000()
+        {
+            var Outputs = Collisions.CollisionFuntions.Cyclatron(new Particles.Electron(0), 100, 1000, FRandom.Seed(1, 1), 0, 10);
+            Assert.AreEqual(1000, Outputs);
         }
     }
 }

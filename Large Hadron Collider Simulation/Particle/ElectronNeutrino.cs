@@ -14,11 +14,13 @@ namespace Particles
             Velocity = velocity;
             Position = position;
             FeynmanSymbol = "Ve";
+            Name = "Electron-Neutrino";
         }
         public ElectronNeutrino(double velocity) : base(velocity)
         {
             Velocity = velocity;
             FeynmanSymbol = "Ve";
+            Name = "Electron-Neutrino";
         }
     }
 }

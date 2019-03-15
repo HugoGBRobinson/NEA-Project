@@ -18,6 +18,7 @@ namespace Particles
         public Lepton(double velocity, Vector3D position, double distance) : base(velocity, position, distance)
         {
         }
+
         public int LeptonNumber { get; protected set; }
 
        

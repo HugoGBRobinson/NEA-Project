@@ -19,6 +19,7 @@ namespace Particles
         public double LifeSpan { get; protected set; }
         public double Distance { get; protected set; }
         public double Charge { get; protected set; }
+        public string Name { get; protected set; }
 
         public Particle(double velocity, Vector3D position)
         {

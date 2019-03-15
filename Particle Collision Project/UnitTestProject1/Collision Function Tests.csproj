@@ -53,11 +53,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnihilationTests.cs" />
+    <Compile Include="CreateAnhillationPhotonTests.cs" />
     <Compile Include="CyclatronTests.cs" />
+    <Compile Include="Electron Capture Tests.cs" />
     <Compile Include="ElectrostaticReplusionTests.cs" />
     <Compile Include="FeynmannTests2.cs" />
+    <Compile Include="GetRestMassTests.cs" />
+    <Compile Include="GetVelocityTests.cs" />
+    <Compile Include="TotalRestMassTests.cs" />
+    <Compile Include="TotalVelocityTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WavelengthToEnergyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
