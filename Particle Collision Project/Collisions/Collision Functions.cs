@@ -14,42 +14,24 @@ namespace Collisions
     {
         public static void Main(string[] args)
         {
-
-
         }
         //Pure
         public static Tuple<Photon, Photon> Annialation(Particles.Particle Particle, Particles.Particle AntiParticle, FRandom Rand) // Simple collision     
         {
-
             return (VectorFunctions.OppositeEjections(CreateAnnialationPhoton(Particle, AntiParticle), CreateAnnialationPhoton(Particle, AntiParticle), Rand));
         }
         //Pure
         public static Photon CreateAnnialationPhoton(Particle Particle, Particle AntiParticle)
         {
             // This is all one line, it has been split onto multiple lines for readability 
-            return new Photon(
-
-                EnergyToWavelength(MassToEnergy(TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle))))
-                + VelocityToEnergy(TotalVelocity(FList.Map(GetVelocity, FList.New<Particles.Particle>(Particle, AntiParticle))),
-                    TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle)))) / 2),
-
-                    EnergyToFrequency(MassToEnergy(TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle))))
-                + VelocityToEnergy(TotalVelocity(FList.Map(GetVelocity, FList.New<Particles.Particle>(Particle, AntiParticle))),
-                    TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle)))) / 2));
-
-
+            return new Photon(EnergyToWavelength(MassToEnergy(TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle)))) + VelocityToEnergy(TotalVelocity(FList.Map(GetVelocity, FList.New<Particles.Particle>(Particle, AntiParticle))), TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle)))) / 2), EnergyToFrequency(MassToEnergy(TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle)))) + VelocityToEnergy(TotalVelocity(FList.Map(GetVelocity, FList.New<Particles.Particle>(Particle, AntiParticle))), TotalRestmass(FList.Map(GetRestMass, FList.New<Particles.Particle>(Particle, AntiParticle)))) / 2));
         }
 
         //Pure
         public static Tuple<Particle, Particle> PairProductionPhoton(Photon Photon, FRandom Rand)
         {
-
             //This is all one line, it has been split onto multiple lines for readability
-            return WavelengthToEnergy(Photon) >= MassToEnergy(new Proton(1, new Vector3D(1, 1, 1)).RestMass) ?
-            // Returns the tuples as the vector function OppsiteEjections also returns the tuple of the particles with changed vectors
-            VectorFunctions.OppositeEjections(CreatePairproductionOutputGreaterThanProtonRestMass(Photon), CreatePairproductionOutputGreaterThanProtonRestMass(Photon), Rand)
-            : VectorFunctions.OppositeEjections(CreatePairproductionOutputLessThanProtonRestMass(Photon), CreatePairproductionOutputLessThanProtonRestMass(Photon), Rand);
-
+            return WavelengthToEnergy(Photon) >= MassToEnergy(new Proton(1, new Vector3D(1, 1, 1)).RestMass) ? VectorFunctions.OppositeEjections(CreatePairproductionOutputGreaterThanProtonRestMass(Photon), CreatePairproductionOutputGreaterThanProtonRestMass(Photon), Rand): VectorFunctions.OppositeEjections(CreatePairproductionOutputLessThanProtonRestMass(Photon), CreatePairproductionOutputLessThanProtonRestMass(Photon), Rand);
         }
 
         public static Proton CreatePairproductionOutputGreaterThanProtonRestMass(Photon Photon)
@@ -69,71 +51,38 @@ namespace Collisions
             return new Tuple<Atom, Particle>(AtomCreator(Atom.AtomicNumber - 1, Atom.MassNumber), VectorFunctions.SingularEjection(new ElectronNeutrino(1), Rand));
         }
 
-        //Dirty
-        public static FList<Particles.Particle> Cyclatron<T>(T Particle, double FluxDensity , int NumberOfInputParticles, FRandom Rand, double LowerEdge, double HigherEdge) where T : Particle
-        {
-            // F = BQv
-            // B = Flux Density
-            // Q = Charge
-            // v = Velocity
-            //As BQv = mv^2/r      r = mv/BQ       r*2 = Diameter 
-            if (Particle.Charge > 0)
-            {
-                // Proton
-                //Multiplier 1
-            }
-            else
-            {
-                var d = ChangeNegativeChargeToPositive(GenerateListOfParticlesWithRandomVelocity(GenerateParticleWithRandomVelocity(Particle, Rand), NumberOfInputParticles, Rand));
-                return FList.Filter(i => CheckIfParticleVelocityIsInboundries(i, new Tuple<double, double>(LowerEdge,HigherEdge), FluxDensity) == true, d);
 
-                //Electron
-                // Multiplier -1
-            }
-            return null;
-       
+        //Cyclatron
+        public static Particle Cyclatron<T>(T P, double E, double B, double RequiredV) where T: Particle
+        {
+            return ElectricFiledToFindV(E, P, P.Velocity) >= RequiredV ? (T)Activator.CreateInstance(typeof(T), ElectricFiledToFindV(E, P, P.Velocity), new Vector3D(0, MagneticFieldToFindR(B, ElectricFiledToFindV(E, P, P.Velocity), P), 0)) : (T)Activator.CreateInstance(typeof(T), Cyclatron((T)Activator.CreateInstance(typeof(T), E, B, ElectricFiledToFindV(E, P, P.Velocity)),E,B,RequiredV).Velocity ,RequiredV);
         }
 
-        private static FList<T> GenerateListOfParticlesWithSetVelocities<T>(T particle, FList<double> f) where T : Particle
+        //r = vm/Be
+        private static double MagneticFieldToFindR<T>(double B, double v, T P) where T: Particle
         {
-            return FList.Length(f) != 1 ? FList.New((T)Activator.CreateInstance(particle.GetType(), FList.Head(f)), GenerateListOfParticlesWithSetVelocities(particle, FList.Tail(f)))
-                : FList.New((T)Activator.CreateInstance(particle.GetType(), FList.Head(f)));
+            return (v * P.RestMass) / (B * P.Charge);
+        }
+        //v = EeL/mv
+        private static double ElectricFiledToFindV<T>(double E, T P,double InitialV) where T: Particle 
+        {
+            return (E * P.Charge * 0.01) / (P.RestMass * InitialV);
         }
 
+        //Velocity Selector 
+        //v=E/B
+        //E = Electric field strength
+        //B = Magnetic Field strength 
 
-        private static bool CheckIfParticleVelocityIsInboundries<T>(T Particle, Tuple<double, double> tuple, double FluxDensity) where T : Particle
+        //Need to stress this fucntion as it has a lot going for it
+        public static FList<Particles.Particle> VelocitySelector<T>(T Particle, int NumberOfparticles, double E, double B, FRandom Rand) where T : Particle
         {
-            return Particle.Velocity > FindRangeForVelocitiesFromGapWidth(tuple.Item1, tuple.Item2, Particle, FluxDensity).Item1
-                ? Particle.Velocity < FindRangeForVelocitiesFromGapWidth(tuple.Item1, tuple.Item2, Particle, FluxDensity).Item2 ? true : false : false;
-        }
-
-        public static FList<T> ChangeNegativeChargeToPositive<T>(FList<T> fList) where T:Particle
-        {
-            return FList.Map(p => CopyWithNewCharge(p) , fList);
-        }
-
-        private static T CopyWithNewCharge<T>(T p) where T : Particle
-        {
-            return (T)Activator.CreateInstance(p.GetType(), p.Velocity, p.Position, p.Distance, ((T)Activator.CreateInstance(p.GetType(), 0)).Charge * -1);
-        }
-
-        public static Tuple<double,double> FindRangeForVelocitiesFromGapWidth<T>(double lowerEdge, double higherEdge,T Particle, double FluxDensity ) where T: Particle
-            //This no longer works how it is ment to, need to fix!!
-        {
-            return new Tuple<double, double>(Convert.ToInt32(CalculateVFromR(lowerEdge, Particle, FluxDensity)), Convert.ToInt32(CalculateVFromR(higherEdge, Particle, FluxDensity)));
-        }
-
-        public static double CalculateVFromR<T>(double Edge, T particle, double FluxDensity) where T : Particle //Calculation errors 
-            // Need to Fix!!
-        {
-            //rBQ/m = v
-            return (Edge * FluxDensity * particle.Charge) / particle.RestMass;
+            return FList.Length(FList.Filter((x) => x.Velocity == Devide(E, B), GenerateListOfParticlesWithRandomVelocity(Particle, NumberOfparticles, Rand))) != 0  ? FList.Filter((x) => x.Velocity == Devide(E, B), GenerateListOfParticlesWithRandomVelocity(Particle, NumberOfparticles, Rand)) : null;
         }
 
         public static FList<Particles.Particle> GenerateListOfParticlesWithRandomVelocity<T>(T particle, int numberOfInputParticles, FRandom Rand) where T : Particle
         {
-            return numberOfInputParticles != 1 ? FList.New(GenerateParticleWithRandomVelocity(particle, Rand), GenerateListOfParticlesWithRandomVelocity(GenerateParticleWithRandomVelocity(particle, FRandom.Next(Rand, 0, 100)), numberOfInputParticles - 1, FRandom.Next(Rand, 0, 100)))
-            : FList.New(GenerateParticleWithRandomVelocity(particle, Rand));
+            return numberOfInputParticles != 1 ? FList.New(GenerateParticleWithRandomVelocity(particle, Rand), GenerateListOfParticlesWithRandomVelocity(GenerateParticleWithRandomVelocity(particle, FRandom.Next(Rand, 0, 100)), numberOfInputParticles - 1, FRandom.Next(Rand, 0, 100))) : FList.New(GenerateParticleWithRandomVelocity(particle, Rand));
         }
 
         public static Particle GenerateParticleWithRandomVelocity<T>(T particle, FRandom rand) where T : Particle
@@ -148,7 +97,6 @@ namespace Collisions
 
         public static FRandom RandomiseVelocity(FRandom Rand)
         {
-
             return FRandom.Next(Rand, Convert.ToInt32(Math.Pow(1, 3)), Convert.ToInt32(Math.Pow(2.9, 8)));
         }
 
@@ -180,9 +128,7 @@ namespace Collisions
 
         public static Tuple<Particle,Particle> ElectrostaticRepulsion <T>(T P1, T P2, FRandom Rand, Vector3D StartingPositionParticle1, Vector3D StartingPositionParticle2) where T : Particle
         {
-
-            return new Tuple<Particle, Particle>((T)Activator.CreateInstance(P1.GetType(), VectorFunctions.AcelerationOfParticles(P1, P2, StartingPositionParticle1, StartingPositionParticle2), VectorFunctions.CreateOpposite(VectorFunctions.VectorBetween(StartingPositionParticle1, StartingPositionParticle2)).Item2),
-                (T)Activator.CreateInstance(P2.GetType(), VectorFunctions.AcelerationOfParticles(P2, P1, StartingPositionParticle1, StartingPositionParticle2), VectorFunctions.VectorBetween(StartingPositionParticle1, StartingPositionParticle2)));
+            return new Tuple<Particle, Particle>((T)Activator.CreateInstance(P1.GetType(), VectorFunctions.AcelerationOfParticlesFromElectrostaticForce(P1, P2, StartingPositionParticle1, StartingPositionParticle2), VectorFunctions.CreateOpposite(VectorFunctions.VectorBetween(StartingPositionParticle1, StartingPositionParticle2)).Item2), (T)Activator.CreateInstance(P2.GetType(), VectorFunctions.AcelerationOfParticlesFromElectrostaticForce(P2, P1, StartingPositionParticle1, StartingPositionParticle2), VectorFunctions.VectorBetween(StartingPositionParticle1, StartingPositionParticle2)));
         }
 
         
@@ -193,6 +139,8 @@ namespace Collisions
         public static Func<Particles.Particle, double> GetRestMass = x => x.RestMass;
         public static Func<Particles.Particle, double> GetVelocity = x => x.Velocity;
         public static Func<double, double, double> add = (x, y) => x + y;
+        public static Func<double, double, double> Devide = (x, y) => x / y;
+
         //Pure
         public static double TotalRestmass(FList<Double> ListOfMasses)
         {
@@ -222,7 +170,6 @@ namespace Collisions
         private static double MassToEnergy(double totalRestMass) //E=mc^2
         {
             return totalRestMass * Math.Pow(300000000, 2);
-
         }
         public static double EnergyToWavelength(double energy) //hc/E
         {
@@ -261,7 +208,6 @@ namespace Collisions
         public static FList<Neutron> CreateNeutronList(int NeutronNumber, FList<Neutron> NeutronNumberList)
         {
             return NeutronNumber == FList.Length(NeutronNumberList) ? NeutronNumberList : CreateNeutronList(NeutronNumber, FList.Prepend(new Neutron(0), NeutronNumberList));
-
         }
 
     }
@@ -318,7 +264,7 @@ namespace Collisions
             return (T)Activator.CreateInstance(P1.GetType(),P1.Velocity , Vector3D.Add(StartingPosition,Vector3D.Add(P1.Position, P2.Position)));  //Not dealing with genircs, but dealing with the acctual type passed in 
         }
 
-        public static double AcelerationOfParticles<T>(T Particle1, T Particle2, Vector3D StartingPositionParticle1, Vector3D StartingPositionParticle2) where T : Particle
+        public static double AcelerationOfParticlesFromElectrostaticForce<T>(T Particle1, T Particle2, Vector3D StartingPositionParticle1, Vector3D StartingPositionParticle2) where T : Particle
         {
             //F = ma
             //F = Qq/4Pi8.85E-12r^2

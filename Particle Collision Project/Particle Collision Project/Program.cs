@@ -25,10 +25,10 @@ namespace Particle_Collision_Project
                 Console.WriteLine("1: Annihilation (WIP)");
                 Console.WriteLine("2: Electron capture");
                 Console.WriteLine("3: Pair Production");
-                Console.WriteLine("4: Cyclatron (WIP)");
+                Console.WriteLine("4: Velocity Selector");
                 Console.WriteLine("5: Atom Intercations (WIP)");
                 Console.WriteLine("6: Electrostatic Repulsion (WIP)");
-                Console.WriteLine("7: Experiment with gold to find the proton simulator??");
+                Console.WriteLine("7: Cyclatron");
                 Console.WriteLine("10: Exit");
                 int userinput = Convert.ToInt32( Console.ReadLine());
                 FRandom FirstSeed = FRandom.SeedFromClock(DateTime.Now);
@@ -46,6 +46,7 @@ namespace Particle_Collision_Project
                         Console.WriteLine("Particle2:");
                         var VelocityP2 = Convert.ToDouble(Console.ReadLine());
                         Tuple<Photon,Photon> AnihilationOutput = null;
+                        Console.Clear();
                         switch (answer)
                         {
                             case 1:
@@ -112,6 +113,7 @@ namespace Particle_Collision_Project
                         int UserInputMassNumber = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Please entre the atomic number of the atom ");
                         int UserInputAtomicNumber = Convert.ToInt32(Console.ReadLine());
+                        Console.Clear();
                         var ElectronCapture = Collisions.CollisionFuntions.ElectronCaputre(Collisions.CollisionFuntions.AtomCreator(UserInputAtomicNumber, UserInputMassNumber), FirstSeed);
                         Console.WriteLine("The new atom created is " + ElectronCapture.Item1.Name + ", and it has an atomic number of " + ElectronCapture.Item1.AtomicNumber + " And a mass number of " + ElectronCapture.Item1.MassNumber);
                         Console.WriteLine("The other particle produced was a " + ElectronCapture.Item2);
@@ -123,6 +125,7 @@ namespace Particle_Collision_Project
                         var UserWavelength = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("Please enter the Frequency of the photon");
                         var UserFrequency = Convert.ToDouble(Console.ReadLine());
+                        Console.Clear();
                         Console.WriteLine("");
                         Console.WriteLine(Collisions.CollisionFuntions.PairProductionPhoton(new Photon(UserWavelength, UserFrequency), FirstSeed).Item1);
                         Console.WriteLine(Collisions.CollisionFuntions.PairProductionPhoton(new Photon(UserWavelength, UserFrequency), FirstSeed).Item1.Velocity + " m/s");
@@ -135,29 +138,43 @@ namespace Particle_Collision_Project
                         break;
 
                     case 4:
-
-                        var a = Collisions.CollisionFuntions.Cyclatron(new Electron(0), 100, 1000, FirstSeed,3E-48 ,7E-47);
-                        for (int i = 0; i < FList.Length(a); i++)
+                        Console.WriteLine("What particle is bieng selected?  ");
+                        Console.WriteLine("1: Protons");
+                        Console.WriteLine("2: Electrons");
+                        var answer4 = Console.ReadLine();
+                        Console.WriteLine("How many particles are passing through the Velocity Selector? (Up to 1000)  ");
+                        var NumberOfparticles = Console.ReadLine();
+                        Console.WriteLine("Set the strength of the Electric Field E  ");
+                        var E = Console.ReadLine();
+                        Console.WriteLine("Set the strength of the Magnetic Field B  ");
+                        var B = Console.ReadLine();
+                        if (Convert.ToInt32(answer4) == 1)
                         {
-                            Console.WriteLine(FList.Head(a));
-                            FList.Take(i, a);
+                            var a = Collisions.CollisionFuntions.VelocitySelector(new Proton(0), Convert.ToInt32(NumberOfparticles), Convert.ToInt32(E), Convert.ToInt32(B), FirstSeed);
+                            if (a == null)
+                            {
+                                Console.WriteLine("No particles were generated with this velocity");
+                            }
+                            else
+                            {
+                                Console.WriteLine(FList.Length(a));
+                            }
                         }
-                        Console.WriteLine(FList.Length(a));
-                        //Console.WriteLine("This segment generates either protons or electrons of random velcoity and then outputs a single velocity");
-                        //Console.WriteLine("1: Protons");
-                        //Console.WriteLine("2: Electrons");
-                        //var answer4 = Convert.ToInt32(Console.ReadLine());
-                        //Console.WriteLine("Please enter the value of the field strength");
-                        //var FieldStrength = Convert.ToDouble(Console.ReadLine());
-                        //Console.WriteLine("Please enter the number of particles to be generated");
-                        //int n = Convert.ToInt32(Console.ReadLine());
-                        //Console.WriteLine("");
-                        //for (int i = 0; i < FList.Length(Collisions.CollisionFuntions.Cyclatron(new Proton(0), 20, 100, FirstSeed)); i++)
-                        //{
-                        //    //Console.WriteLine(FList.Take(i, 
-                        //    Console.WriteLine(Collisions.CollisionFuntions.Cyclatron(new Proton(0), 20, 100, FirstSeed));
-                        //}
-                        //Console.WriteLine("");
+                        else
+                        {
+                            var a = Collisions.CollisionFuntions.VelocitySelector(new Electron(0), Convert.ToInt32(NumberOfparticles), Convert.ToInt32(E), Convert.ToInt32(B), FirstSeed);
+                            if (a == null)
+                            {
+                                Console.WriteLine("No particles were generated with this velocity");
+                            }
+                            else
+                            {
+                                Console.WriteLine(FList.Length(a));
+                            }
+                        }
+                        
+                        
+                       
                         break;
 
                     case 5:
@@ -168,6 +185,7 @@ namespace Particle_Collision_Project
                         Console.WriteLine("MassNumber");
                         var MassNumber =Convert.ToInt32(Console.ReadLine());
                         var Atom = Collisions.CollisionFuntions.AtomCreator(AtomicNumber, MassNumber);
+                        Console.Clear();
                         while (true)
                         {
                             Console.WriteLine("For Beta-Plus Decay press 1");
@@ -235,6 +253,12 @@ namespace Particle_Collision_Project
                         Console.WriteLine("");
                         break;
 
+                    case 7:
+
+                        Console.WriteLine(Collisions.CollisionFuntions.Cyclatron(new Proton(0), 1000, 1000, 100).Velocity);
+                        Console.WriteLine(Collisions.CollisionFuntions.Cyclatron(new Proton(0), 1000, 1000, 100).Position);
+
+                        break;
                     case 10:
                         ContinueLoop = false;
                             break;

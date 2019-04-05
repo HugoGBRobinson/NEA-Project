@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnihilationTests.cs" />
+    <Compile Include="booleanFuncForVelocitySelectorTests.cs" />
     <Compile Include="CreateAnhillationPhotonTests.cs" />
     <Compile Include="CyclatronTests.cs" />
     <Compile Include="Electron Capture Tests.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="TotalVelocityTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VelocitySelectorTests.cs" />
     <Compile Include="WavelengthToEnergyTests.cs" />
   </ItemGroup>
   <ItemGroup>
