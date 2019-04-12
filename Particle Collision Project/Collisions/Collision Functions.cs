@@ -55,18 +55,19 @@ namespace Collisions
         //Cyclatron
         public static Particle Cyclatron<T>(T P, double E, double B, double RequiredV) where T: Particle
         {
-            return ElectricFiledToFindV(E, P, P.Velocity) >= RequiredV ? (T)Activator.CreateInstance(typeof(T), ElectricFiledToFindV(E, P, P.Velocity), new Vector3D(0, MagneticFieldToFindR(B, ElectricFiledToFindV(E, P, P.Velocity), P), 0)) : (T)Activator.CreateInstance(typeof(T), Cyclatron((T)Activator.CreateInstance(typeof(T), E, B, ElectricFiledToFindV(E, P, P.Velocity)),E,B,RequiredV).Velocity ,RequiredV);
+            return  ElectricFiledToFindV(E, P, P.Velocity, B) >= RequiredV  ? (T)Activator.CreateInstance(typeof(T), ElectricFiledToFindV(E, P, P.Velocity, B), new Vector3D(0, MagneticFieldToFindR(B, ElectricFiledToFindV(E, P, P.Velocity,B), P), 0)) 
+                : (T)Activator.CreateInstance(typeof(T), (Cyclatron((T)Activator.CreateInstance(typeof(T), ElectricFiledToFindV(E, P, P.Velocity, B)), E, B,RequiredV)).Velocity, (Cyclatron((T)Activator.CreateInstance(typeof(T), ElectricFiledToFindV(E, P, P.Velocity,B)), E, B, RequiredV), MagneticFieldToFindR(B, ElectricFiledToFindV(E, P, P.Velocity,B), P)).Item1.Position);
         }
 
         //r = vm/Be
         private static double MagneticFieldToFindR<T>(double B, double v, T P) where T: Particle
         {
-            return (v * P.RestMass) / (B * P.Charge);
+            return P.Charge > 0 ? (v * P.RestMass) / (B * P.Charge) : (v * P.RestMass) / (B * (P.Charge * -1));
         }
-        //v = EeL/mv
-        private static double ElectricFiledToFindV<T>(double E, T P,double InitialV) where T: Particle 
+        //v = EeLv/m
+        private static double ElectricFiledToFindV<T>(double E, T P,double InitialV, double B) where T: Particle 
         {
-            return (E * P.Charge * 0.01) / (P.RestMass * InitialV);
+            return P.Charge > 0 ? Math.Sqrt((E * P.Charge * 0.01 * InitialV) / (P.RestMass)) : Math.Sqrt((E * (P.Charge * -1) * 0.01 * InitialV) / (P.RestMass));
         }
 
         //Velocity Selector 
@@ -77,7 +78,7 @@ namespace Collisions
         //Need to stress this fucntion as it has a lot going for it
         public static FList<Particles.Particle> VelocitySelector<T>(T Particle, int NumberOfparticles, double E, double B, FRandom Rand) where T : Particle
         {
-            return FList.Length(FList.Filter((x) => x.Velocity == Devide(E, B), GenerateListOfParticlesWithRandomVelocity(Particle, NumberOfparticles, Rand))) != 0  ? FList.Filter((x) => x.Velocity == Devide(E, B), GenerateListOfParticlesWithRandomVelocity(Particle, NumberOfparticles, Rand)) : null;
+            return FList.Filter((x) => x.Velocity >= Devide(E, B) - Devide(E, B) * 0.1 && x.Velocity <= Devide(E, B) + Devide(E, B) * 0.1, GenerateListOfParticlesWithRandomVelocity(Particle, NumberOfparticles, Rand));
         }
 
         public static FList<Particles.Particle> GenerateListOfParticlesWithRandomVelocity<T>(T particle, int numberOfInputParticles, FRandom Rand) where T : Particle
@@ -87,13 +88,8 @@ namespace Collisions
 
         public static Particle GenerateParticleWithRandomVelocity<T>(T particle, FRandom rand) where T : Particle
         {
-            return (T)Activator.CreateInstance(particle.GetType(), particle.Velocity + RandomiseVelocity(rand).Number, particle.Position, particle.Distance);
+            return (T)Activator.CreateInstance(particle.GetType(),RandomiseVelocity(rand).Number, particle.Position, particle.Distance);
         }
-
-        //public static double Calculator(double restMass, int velocity, double fluxDensity, double charge)
-        //{
-        //    return ((restMass * velocity) / fluxDensity * charge);
-        //}
 
         public static FRandom RandomiseVelocity(FRandom Rand)
         {

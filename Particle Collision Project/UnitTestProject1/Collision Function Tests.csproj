@@ -52,10 +52,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFuncTests.cs" />
     <Compile Include="AnihilationTests.cs" />
     <Compile Include="booleanFuncForVelocitySelectorTests.cs" />
     <Compile Include="CreateAnhillationPhotonTests.cs" />
     <Compile Include="CyclatronTests.cs" />
+    <Compile Include="DevideFuncTests.cs" />
+    <Compile Include="DevideTests.cs" />
     <Compile Include="Electron Capture Tests.cs" />
     <Compile Include="ElectrostaticReplusionTests.cs" />
     <Compile Include="FeynmannTests2.cs" />

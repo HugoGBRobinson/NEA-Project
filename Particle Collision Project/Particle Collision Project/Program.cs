@@ -27,7 +27,7 @@ namespace Particle_Collision_Project
                 Console.WriteLine("3: Pair Production");
                 Console.WriteLine("4: Velocity Selector");
                 Console.WriteLine("5: Atom Intercations (WIP)");
-                Console.WriteLine("6: Electrostatic Repulsion (WIP)");
+                Console.WriteLine("6: Electrostatic Repulsion");
                 Console.WriteLine("7: Cyclatron");
                 Console.WriteLine("10: Exit");
                 int userinput = Convert.ToInt32( Console.ReadLine());
@@ -72,6 +72,8 @@ namespace Particle_Collision_Project
                                     Console.WriteLine("It's energy is " + Collisions.CollisionFuntions.WavelengthToEnergy(AnihilationOutput.Item2));
                                     Console.WriteLine("And its ejection direction is " + AnihilationOutput.Item2.Position);
                                     Console.WriteLine("");
+
+                                    Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(new Proton(0).FeynmanSymbol, new Proton(0).FeynmanSymbol), FList.New(new Photon().FeynmanSymbol, new Photon().FeynmanSymbol)));
                                 }
 
                                 Console.WriteLine("");
@@ -97,6 +99,8 @@ namespace Particle_Collision_Project
                                     Console.WriteLine("The particle is a " + AnihilationOutput.Item2);
                                     Console.WriteLine("It's velocity is " + AnihilationOutput.Item2.Velocity);
                                     Console.WriteLine("It's energy is " + Collisions.CollisionFuntions.WavelengthToEnergy(AnihilationOutput.Item2));
+                                    Console.WriteLine("");
+                                    Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(new Electron(0).FeynmanSymbol, new Electron(0).FeynmanSymbol), FList.New(new Photon().FeynmanSymbol, new Photon().FeynmanSymbol)));
                                 }
                                 
                                 
@@ -135,6 +139,7 @@ namespace Particle_Collision_Project
                         Console.WriteLine(Collisions.CollisionFuntions.PairProductionPhoton(new Photon(UserWavelength, UserFrequency), FirstSeed).Item2.Velocity + " m/s");
                         Console.WriteLine("And its position is " + Collisions.CollisionFuntions.PairProductionPhoton(new Photon(UserWavelength, UserFrequency), FirstSeed).Item2.Position);
                         Console.WriteLine("");
+                        Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(new Photon().FeynmanSymbol, new Photon().FeynmanSymbol), FList.New(Collisions.CollisionFuntions.PairProductionPhoton(new Photon(UserWavelength, UserFrequency), FirstSeed).Item1.FeynmanSymbol, Collisions.CollisionFuntions.PairProductionPhoton(new Photon(UserWavelength, UserFrequency), FirstSeed).Item2.FeynmanSymbol)));
                         break;
 
                     case 4:
@@ -151,25 +156,25 @@ namespace Particle_Collision_Project
                         if (Convert.ToInt32(answer4) == 1)
                         {
                             var a = Collisions.CollisionFuntions.VelocitySelector(new Proton(0), Convert.ToInt32(NumberOfparticles), Convert.ToInt32(E), Convert.ToInt32(B), FirstSeed);
-                            if (a == null)
+                            if (FList.Length(a) == 0)
                             {
                                 Console.WriteLine("No particles were generated with this velocity");
                             }
                             else
                             {
-                                Console.WriteLine(FList.Length(a));
+                                Console.WriteLine("The number of particles output is " + FList.Length(a));
                             }
                         }
                         else
                         {
                             var a = Collisions.CollisionFuntions.VelocitySelector(new Electron(0), Convert.ToInt32(NumberOfparticles), Convert.ToInt32(E), Convert.ToInt32(B), FirstSeed);
-                            if (a == null)
+                            if (FList.Length(a)  == 0)
                             {
                                 Console.WriteLine("No particles were generated with this velocity");
                             }
                             else
                             {
-                                Console.WriteLine(FList.Length(a));
+                                Console.WriteLine("The number of particles output is " + FList.Length(a));
                             }
                         }
                         
@@ -191,47 +196,52 @@ namespace Particle_Collision_Project
                             Console.WriteLine("For Beta-Plus Decay press 1");
                             Console.WriteLine("For Beta-Minus Decay press 2");
                             Console.WriteLine("For Electron capture press 3");
+                            Console.WriteLine("For Alpha Decay press 4");
 
 
                             Console.WriteLine("To exit to main menu press 10");
-                            var answer6 = Convert.ToInt32(Console.ReadLine());
-                            if (answer6 == 1)
+                            var answer5 = Convert.ToInt32(Console.ReadLine());
+                            if (answer5 == 1)
                             {
                                 Console.WriteLine("");
                                 Console.WriteLine(Collisions.CollisionFuntions.BetaPlusDecayAtom(Atom).Name);
                                 Console.WriteLine(Collisions.CollisionFuntions.BetaPlusDecayAtom(Atom).AtomicNumber);
                                 Console.WriteLine(Collisions.CollisionFuntions.BetaPlusDecayAtom(Atom).MassNumber);
                                 Atom = Collisions.CollisionFuntions.BetaPlusDecayAtom(Atom);
+                                Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(Atom.Name), FList.New(Collisions.CollisionFuntions.BetaPlusDecayAtom(Atom).Name, new Particles.Positron(0).FeynmanSymbol)));
                                 Console.WriteLine("");
                             }
-                            else if (answer6 == 2)
+                            else if (answer5 == 2)
                             {
                                 Console.WriteLine("");
                                 Console.WriteLine(Collisions.CollisionFuntions.BetaMinusDeacyAtom(Atom).Name);
                                 Console.WriteLine(Collisions.CollisionFuntions.BetaMinusDeacyAtom(Atom).AtomicNumber);
                                 Console.WriteLine(Collisions.CollisionFuntions.BetaMinusDeacyAtom(Atom).MassNumber);
                                 Atom = Collisions.CollisionFuntions.BetaMinusDeacyAtom(Atom);
+                                Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(Atom.Name), FList.New(Collisions.CollisionFuntions.BetaMinusDeacyAtom(Atom).Name, new Particles.Electron(0).FeynmanSymbol)));
                                 Console.WriteLine("");
                             }
-                            else if (answer6 == 3)
+                            else if (answer5 == 3)
                             {
                                 Console.WriteLine("");
                                 Console.WriteLine(Collisions.CollisionFuntions.ElectronCaputre(Atom, FirstSeed).Item1.Name);
                                 Console.WriteLine(Collisions.CollisionFuntions.ElectronCaputre(Atom, FirstSeed).Item1.AtomicNumber);
                                 Console.WriteLine(Collisions.CollisionFuntions.ElectronCaputre(Atom, FirstSeed).Item1.MassNumber);
                                 Atom = Collisions.CollisionFuntions.ElectronCaputre(Atom, FirstSeed).Item1;
+                                Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(Atom.Name), FList.New(Collisions.CollisionFuntions.ElectronCaputre(Atom, FirstSeed).Item1.Name, new Particles.ElectronNeutrino(0).FeynmanSymbol)));
                                 Console.WriteLine("");
                             }
-                            else if (answer6 == 4)
+                            else if (answer5 == 4)
                             {
                                 Console.WriteLine("");
                                 Console.WriteLine(Collisions.CollisionFuntions.AlphaDecay(Atom).Name);
                                 Console.WriteLine(Collisions.CollisionFuntions.AlphaDecay(Atom).AtomicNumber);
                                 Console.WriteLine(Collisions.CollisionFuntions.AlphaDecay(Atom).MassNumber);
                                 Atom = Collisions.CollisionFuntions.AlphaDecay(Atom);
+                                Console.WriteLine(Collisions.CollisionFuntions.FeynmanDiagram(FList.New(Atom.Name), FList.New(Collisions.CollisionFuntions.AlphaDecay(Atom).Name, Collisions.CollisionFuntions.AtomCreator(2,4).Name + " Nucleus")));
                                 Console.WriteLine("");
                             }
-                            else if (answer6 == 10)
+                            else if (answer5 == 10)
                             {
                                 break;
                             }
@@ -239,24 +249,107 @@ namespace Particle_Collision_Project
                         break;
 
                     case 6:
-                        
 
-
-
-
-
-                        Console.WriteLine("");
-                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item1.Position);
-                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item2.Position);
-                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item1.Velocity);
-                        Console.WriteLine(Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(10), new Proton(10), FirstSeed, new Vector3D(-10, 27, 17), new Vector3D(10, -5, 4)).Item2.Velocity);
-                        Console.WriteLine("");
+                        Console.WriteLine("Which two Particles are bieng simulated?");
+                        Console.WriteLine("1: Two Protons");
+                        Console.WriteLine("2: Two Electrons");
+                        var answer6 = Convert.ToInt32(Console.ReadLine());
+                        if (answer6 == 1)
+                        {
+                            Console.WriteLine("Please enter the velocity for the first particles");
+                            var VP1 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Now enter the x, y and z coordinates for the first particle");
+                            var X1 = Convert.ToInt32(Console.ReadLine());
+                            var Y1 = Convert.ToInt32(Console.ReadLine());
+                            var Z1 = Convert.ToInt32(Console.ReadLine());
+                            var StartPosition1 = new Vector3D(X1, Y1, Z1);
+                            Console.WriteLine("Please enter the velocity for the second particles");
+                            var VP2 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Now enter the x, y and z coordinates for the second particle");
+                            var X2 = Convert.ToInt32(Console.ReadLine());
+                            var Y2 = Convert.ToInt32(Console.ReadLine());
+                            var Z2 = Convert.ToInt32(Console.ReadLine());
+                            var StartPosition2 = new Vector3D(X2, Y2, Z2);
+                            Console.Clear();
+                            Console.WriteLine("The first particle is ejected at (" + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Position.X + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Position.Y + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Position.Z + ")");
+                            Console.WriteLine("With a velocity of " + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Velocity);
+                            Console.WriteLine("");
+                            Console.WriteLine("The second particle is ejected at (" + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Position.X + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Position.Y + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Position.Z + ")");
+                            Console.WriteLine("With a velocity of " + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Proton(VP1), new Proton(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Velocity);
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter the velocity for the first particles");
+                            var VP1 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Now enter the x, y and z coordinates for the first particle");
+                            var X1 = Convert.ToInt32(Console.ReadLine());
+                            var Y1 = Convert.ToInt32(Console.ReadLine());
+                            var Z1 = Convert.ToInt32(Console.ReadLine());
+                            var StartPosition1 = new Vector3D(X1, Y1, Z1);
+                            Console.WriteLine("Please enter the velocity for the second particles");
+                            var VP2 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Now enter the x, y and z coordinates for the second particle");
+                            var X2 = Convert.ToInt32(Console.ReadLine());
+                            var Y2 = Convert.ToInt32(Console.ReadLine());
+                            var Z2 = Convert.ToInt32(Console.ReadLine());
+                            var StartPosition2 = new Vector3D(X2, Y2, Z2);
+                            Console.Clear();
+                            Console.WriteLine("The first particle is ejected at (" + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Position.X + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Position.Y + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Position.Z + ")");
+                            Console.WriteLine("With a velocity of " + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item1.Velocity);
+                            Console.WriteLine("");
+                            Console.WriteLine("The second particle is ejected at (" + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Position.X + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Position.Y + "," + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Position.Z + ")");
+                            Console.WriteLine("With a velocity of " + Collisions.CollisionFuntions.ElectrostaticRepulsion(new Electron(VP1), new Electron(VP2), FirstSeed, StartPosition1, StartPosition2).Item2.Velocity);
+                            Console.WriteLine("");
+                        }
+                       
                         break;
 
                     case 7:
+                        
+                        Console.WriteLine("Please choose what particles are bieng accelerated");
+                        Console.WriteLine("1: Protons");
+                        Console.WriteLine("2: Electrons");
+                        Console.WriteLine("3: Positrons");
+                        Console.WriteLine("4: AntiProtons");
+                        var answer7 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter the electric field strength of the cyclatron");
+                        var ElectricFielsStrength = Convert.ToDouble(Console.ReadLine());
+                        Console.Clear();
+                        Console.WriteLine("Enter the magnetic field strength of the cyclatron");
+                        var MagneticFieldStrength = Convert.ToDouble(Console.ReadLine());
+                        Console.Clear();
+                        Console.WriteLine("What is the target velocity?");
+                        var TargetV = Convert.ToDouble(Console.ReadLine());
+                        Console.Clear();
+                        if (answer7 == 1)
+                        {
+                            
+                            Console.WriteLine("The true speed ejected is " + Collisions.CollisionFuntions.Cyclatron(new Proton(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Velocity + " m/s");
+                            Console.WriteLine("The distance it travled from the centre is " + Collisions.CollisionFuntions.Cyclatron(new Proton(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Position.Y + " m");
+                        }
+                        else if (answer7 == 2)
+                        {
+                            Console.WriteLine("The true speed ejected is " + Collisions.CollisionFuntions.Cyclatron(new Electron(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Velocity + " m/s");
+                            Console.WriteLine("The distance it travled from the centre is " + Collisions.CollisionFuntions.Cyclatron(new Electron(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Position.Y + "m");
+                        }
+                        else if (answer7 == 3)
+                        {
+                            Console.WriteLine("The true speed ejected is " + Collisions.CollisionFuntions.Cyclatron(new Positron(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Velocity + " m/s");
+                            Console.WriteLine("The distance it travled from the centre is " + Collisions.CollisionFuntions.Cyclatron(new Positron(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Position.Y + "m");
+                        }
+                        else if (answer7 == 4)
+                        {
+                            Console.WriteLine("The true speed ejected is " + Collisions.CollisionFuntions.Cyclatron(new Electron(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Velocity + " m/s");
+                            Console.WriteLine("The distance it travled from the centre is " + Collisions.CollisionFuntions.Cyclatron(new Electron(1), ElectricFielsStrength, MagneticFieldStrength, TargetV).Position.Y + "m");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not a valid option, please choose again");   
+                        }
+                        
 
-                        Console.WriteLine(Collisions.CollisionFuntions.Cyclatron(new Proton(0), 1000, 1000, 100).Velocity);
-                        Console.WriteLine(Collisions.CollisionFuntions.Cyclatron(new Proton(0), 1000, 1000, 100).Position);
+                        
 
                         break;
                     case 10:

@@ -16,7 +16,7 @@ namespace UnitTestProject1
         public void Edgecase()
         {
             var Outputs1 = Collisions.CollisionFuntions.WavelengthToEnergy(new Particles.Photon(10E-20,10E50));
-            Assert.AreEqual(1.989E-05, Outputs1);
+            Assert.AreEqual(1.989E-06, Outputs1);
             var Outputs2 = Collisions.CollisionFuntions.WavelengthToEnergy(new Particles.Photon(10E50, 10E-20));
             Assert.AreEqual(1.989E-75, Outputs2);
         }
