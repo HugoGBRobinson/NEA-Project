@@ -53,22 +53,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddFuncTests.cs" />
+    <Compile Include="AlphaDecayTests.cs" />
     <Compile Include="AnihilationTests.cs" />
+    <Compile Include="BetaMinusDecayAtom.cs" />
+    <Compile Include="BetaMinusDecayIndividualTests.cs" />
+    <Compile Include="BetaPlusDecayAtom.cs" />
+    <Compile Include="BetaPlusIndividualDecay.cs" />
     <Compile Include="booleanFuncForVelocitySelectorTests.cs" />
     <Compile Include="CreateAnhillationPhotonTests.cs" />
+    <Compile Include="CreateAnnihilationPhotomTests.cs" />
+    <Compile Include="CreatePairProductionOutputLessThanProtonRestMass.cs" />
+    <Compile Include="CreatePairProductOutputGreaterThanProtonRestMassTests.cs" />
     <Compile Include="CyclatronTests.cs" />
     <Compile Include="DevideFuncTests.cs" />
     <Compile Include="DevideTests.cs" />
     <Compile Include="Electron Capture Tests.cs" />
     <Compile Include="ElectrostaticReplusionTests.cs" />
-    <Compile Include="FeynmannTests2.cs" />
+    <Compile Include="EnergyToFrequency.cs" />
+    <Compile Include="EnergyToVelocityTests.cs" />
+    <Compile Include="EnergyToWavelengthTests.cs" />
+    <Compile Include="FeynmannTests.cs" />
+    <Compile Include="FrequencyToEnergyTests.cs" />
+    <Compile Include="GenerateParticleWithRandomVelocityTests.cs" />
     <Compile Include="GetRestMassTests.cs" />
     <Compile Include="GetVelocityTests.cs" />
+    <Compile Include="MassToEnergy.cs" />
+    <Compile Include="PartialFynmannDiagramsTests.cs" />
+    <Compile Include="RandomiseVelocityTests.cs" />
     <Compile Include="TotalRestMassTests.cs" />
     <Compile Include="TotalVelocityTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VelocitySelectorTests.cs" />
+    <Compile Include="VelocityToEnergyTests.cs" />
     <Compile Include="WavelengthToEnergyTests.cs" />
   </ItemGroup>
   <ItemGroup>

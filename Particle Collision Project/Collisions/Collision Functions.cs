@@ -159,11 +159,11 @@ namespace Collisions
         {
             return Math.Sqrt(energy / 0.5 * mass);
         }
-        private static double VelocityToEnergy(double totalParticleVelocity, double totalRestMass) //Ke =0.5MV^2    Works for low speeds but will need to change to special relativity for very fast speeds 
+        public static double VelocityToEnergy(double totalParticleVelocity, double totalRestMass) //Ke =0.5MV^2    Works for low speeds but will need to change to special relativity for very fast speeds 
         {
             return 0.5 * totalRestMass * Math.Pow(totalParticleVelocity, 2);
         }
-        private static double MassToEnergy(double totalRestMass) //E=mc^2
+        public static double MassToEnergy(double totalRestMass) //E=mc^2
         {
             return totalRestMass * Math.Pow(300000000, 2);
         }

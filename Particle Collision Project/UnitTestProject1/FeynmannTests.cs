@@ -5,8 +5,9 @@ using Quadrivia.FunctionalLibrary;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class FeynmannTests2
+    public class FeynmannTests
     {
+        //Happy Case
         [TestMethod]
         public void SingleSymbol()
         {

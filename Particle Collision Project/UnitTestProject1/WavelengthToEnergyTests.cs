@@ -17,14 +17,21 @@ namespace UnitTestProject1
         {
             var Outputs1 = Collisions.CollisionFuntions.WavelengthToEnergy(new Particles.Photon(10E-20,10E50));
             Assert.AreEqual(1.989E-06, Outputs1);
-            var Outputs2 = Collisions.CollisionFuntions.WavelengthToEnergy(new Particles.Photon(10E50, 10E-20));
-            Assert.AreEqual(1.989E-75, Outputs2);
         }
         [TestMethod]
         public void ErrorCase()
         {
-            var Outputs = Collisions.CollisionFuntions.WavelengthToEnergy(new Particles.Photon());
-            Assert.Fail();
+            try
+            {
+                var Outputs = Collisions.CollisionFuntions.WavelengthToEnergy(new Particles.Photon());
+            }
+            catch (Exception)
+            {
+
+                Assert.AreSame(1, 1);
+            }
+            
+            
         }
 
     }

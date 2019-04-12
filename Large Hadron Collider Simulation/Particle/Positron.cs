@@ -17,7 +17,7 @@ namespace Particles
             RelativeCharge = 1 / 2000;
             LeptonNumber = 1;
             RestMass = 9.109 * Math.Pow(10, -31);
-            FeynmanSymbol = "e-";
+            FeynmanSymbol = "e+";
         }
         public Positron(double velocity) : base (velocity)
         {
@@ -25,7 +25,7 @@ namespace Particles
             RelativeCharge = 1 / 2000;
             LeptonNumber = 1;
             RestMass = 9.109 * Math.Pow(10, -31);
-            FeynmanSymbol = "e-";
+            FeynmanSymbol = "e+";
         }
 
     }

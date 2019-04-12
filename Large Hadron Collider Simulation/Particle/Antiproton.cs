@@ -12,7 +12,7 @@ namespace Particles
 
         public Antiproton(double velocity, Vector3D position) : base(velocity, position)
         {
-            RestMass = 1.6726219 * Math.Pow(10, -27);
+            RestMass = 1.6726219E-27;
             RelativeCharge = -1;
             Quark1 = new Anti_Up();
             Quark2 = new Anti_Up();
@@ -23,7 +23,7 @@ namespace Particles
 
         public Antiproton(double velocity) : base(velocity)
         {
-            RestMass = 1.6726219 * Math.Pow(10, -27);
+            RestMass = 1.6726219E-27;
             RelativeCharge = -1;
             Quark1 = new Anti_Up();
             Quark2 = new Anti_Up();
