@@ -11,7 +11,7 @@ namespace UnitTestProject1
         public void HappyCase()
         {
             var Outputs = Collisions.CollisionFuntions.TotalVelocity(FList.New<double>(234, 4322, new Particles.Proton(48893).Velocity));
-            Assert.AreEqual(8723, Outputs);
+            Assert.AreEqual(53449, Outputs);
         }
         [TestMethod]
         public void EdgeCase()
@@ -20,12 +20,6 @@ namespace UnitTestProject1
             Assert.AreEqual(300123434, Outputs1);
             var Outputs2 = Collisions.CollisionFuntions.TotalVelocity(FList.New<double>(1E-50, 1E-50));
             Assert.AreEqual(2E-50, Outputs2);
-        }
-        [TestMethod]
-        public void ErrorCase()
-        {
-            var Outputs2 = Collisions.CollisionFuntions.TotalVelocity(FList.New<double>());
-            Assert.Fail();
         }
     }
 }

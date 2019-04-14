@@ -27,12 +27,11 @@ namespace UnitTestProject1
             Assert.AreEqual("Electron-Neutrino", Outputs1.Item2.Name);
         }
         [TestMethod]
-        public void Edgecase_WIP() // A Hydrogen atom cannot turn into a neutron + neutrino 
+        public void Edgecase_WIP() 
         {
             var Outputs = Collisions.CollisionFuntions.ElectronCaputre(Collisions.CollisionFuntions.AtomCreator(1, 1), FRandom.Seed(1, 1));
-            //
-            //
-            //
+            Assert.AreEqual(1, Outputs.Item1.MassNumber);
+            Assert.AreEqual(0, Outputs.Item1.AtomicNumber);
             var Outputs2 = Collisions.CollisionFuntions.ElectronCaputre(Collisions.CollisionFuntions.AtomCreator(118, 293), FRandom.Seed(1, 1));
             Assert.AreEqual("Tennessine", Outputs2.Item1.Name);
             Assert.AreEqual(117, Outputs2.Item1.AtomicNumber);

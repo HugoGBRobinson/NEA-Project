@@ -52,9 +52,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcellerationOfParticlesFromelectrostaticForcesTests.cs" />
     <Compile Include="AddFuncTests.cs" />
+    <Compile Include="AdditionOfVectorsForRepulsion.cs" />
     <Compile Include="AlphaDecayTests.cs" />
     <Compile Include="AnihilationTests.cs" />
+    <Compile Include="AtomCreatorTests.cs" />
     <Compile Include="BetaMinusDecayAtom.cs" />
     <Compile Include="BetaMinusDecayIndividualTests.cs" />
     <Compile Include="BetaPlusDecayAtom.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="booleanFuncForVelocitySelectorTests.cs" />
     <Compile Include="CreateAnhillationPhotonTests.cs" />
     <Compile Include="CreateAnnihilationPhotomTests.cs" />
+    <Compile Include="CreateOppositeTests.cs" />
     <Compile Include="CreatePairProductionOutputLessThanProtonRestMass.cs" />
     <Compile Include="CreatePairProductOutputGreaterThanProtonRestMassTests.cs" />
     <Compile Include="CyclatronTests.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="DevideTests.cs" />
     <Compile Include="Electron Capture Tests.cs" />
     <Compile Include="ElectrostaticReplusionTests.cs" />
+    <Compile Include="ElectrostaticRepulsionTests.cs" />
     <Compile Include="EnergyToFrequency.cs" />
     <Compile Include="EnergyToVelocityTests.cs" />
     <Compile Include="EnergyToWavelengthTests.cs" />
@@ -78,11 +83,13 @@
     <Compile Include="GetRestMassTests.cs" />
     <Compile Include="GetVelocityTests.cs" />
     <Compile Include="MassToEnergy.cs" />
+    <Compile Include="OppositeEjectionsTests.cs" />
+    <Compile Include="PairProductionTests.cs" />
     <Compile Include="PartialFynmannDiagramsTests.cs" />
     <Compile Include="RandomiseVelocityTests.cs" />
+    <Compile Include="SingularEjectionTests.cs" />
     <Compile Include="TotalRestMassTests.cs" />
     <Compile Include="TotalVelocityTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VelocitySelectorTests.cs" />
     <Compile Include="VelocityToEnergyTests.cs" />

@@ -31,17 +31,17 @@ namespace Collisions
         public static Tuple<Particle, Particle> PairProductionPhoton(Photon Photon, FRandom Rand)
         {
             //This is all one line, it has been split onto multiple lines for readability
-            return WavelengthToEnergy(Photon) >= MassToEnergy(new Proton(1, new Vector3D(1, 1, 1)).RestMass) ? VectorFunctions.OppositeEjections(CreatePairproductionOutputGreaterThanProtonRestMass(Photon), CreatePairproductionOutputGreaterThanProtonRestMass(Photon), Rand): VectorFunctions.OppositeEjections(CreatePairproductionOutputLessThanProtonRestMass(Photon), CreatePairproductionOutputLessThanProtonRestMass(Photon), Rand);
+            return  FrequencyToEnergy(Photon) >= MassToEnergy(new Proton(1).RestMass) ? VectorFunctions.OppositeEjections(CreatePairproductionOutputGreaterThanProtonRestMass(Photon), CreatePairproductionOutputGreaterThanProtonRestMass(Photon), Rand): VectorFunctions.OppositeEjections(CreatePairproductionOutputLessThanProtonRestMass(Photon), CreatePairproductionOutputLessThanProtonRestMass(Photon), Rand);
         }
 
         public static Proton CreatePairproductionOutputGreaterThanProtonRestMass(Photon Photon)
         {
-            return new Proton(EnergyToVelocity((WavelengthToEnergy(Photon) + MassToEnergy(new Proton(1).RestMass)) / 2, GetRestMass(new Proton(1))));
+            return new Proton(EnergyToVelocity((FrequencyToEnergy(Photon) + MassToEnergy(new Proton(1).RestMass)) / 2, GetRestMass(new Proton(1))));
         }
 
         public static Electron CreatePairproductionOutputLessThanProtonRestMass(Photon Photon)
         {
-            return new Electron(EnergyToVelocity((WavelengthToEnergy(Photon) + MassToEnergy(new Electron(1).RestMass)) / 2, GetRestMass(new Electron(1))));
+            return new Electron(EnergyToVelocity(( FrequencyToEnergy(Photon) + MassToEnergy(new Electron(1).RestMass)) / 2, GetRestMass(new Electron(1))));
         }
 
 
@@ -157,7 +157,7 @@ namespace Collisions
         }
         public static double EnergyToVelocity(double energy, double mass)
         {
-            return Math.Sqrt(energy / 0.5 * mass);
+            return Math.Sqrt(energy * 2 / mass);
         }
         public static double VelocityToEnergy(double totalParticleVelocity, double totalRestMass) //Ke =0.5MV^2    Works for low speeds but will need to change to special relativity for very fast speeds 
         {
@@ -190,7 +190,7 @@ namespace Collisions
         //Pure
         public static Atom AtomCreator(int AtomicNumber, int MassNumber)
         {
-            return  new Atom(CreateProtonList(AtomicNumber, FList.Empty<Proton>()), CreateNeutronList((MassNumber - AtomicNumber), FList.Empty<Neutron>()));
+            return AtomicNumber >= 1 && AtomicNumber <= 118 ? new Atom(CreateProtonList(AtomicNumber, FList.Empty<Proton>()), CreateNeutronList((MassNumber - AtomicNumber), FList.Empty<Neutron>())) : null;
         }
 
 
@@ -232,29 +232,10 @@ namespace Collisions
             return new Tuple<Photon, Photon>(new Photon(P1.Wavelength,P1.Frequency,v), new Photon(P2.Wavelength,P2.Frequency, CreateOpposite(v).Item2));
         }
         //Pure
-        public static Tuple<Vector3D,Vector3D> CreateOpposite (Vector3D V)
+        public static Tuple<Vector3D, Vector3D> CreateOpposite(Vector3D V)
         {
-            return new Tuple<Vector3D, Vector3D>(new Vector3D(V.X,V.Y,V.Z), new Vector3D(V.X * -1, V.Y * -1, V.Z * -1));
+            return new Tuple<Vector3D, Vector3D>(new Vector3D(V.X, V.Y, V.Z), new Vector3D(V.X * -1, V.Y * -1, V.Z * -1));
         }
-
-        public static Particle DistanceEjected<T> (T Particle) where T : Particle
-        {
-            return EdgeOFContainmentChecker((T)Activator.CreateInstance(typeof(T), Particle.Velocity, Particle.Position, (Convert.ToDouble(Particle.LifeSpan) * Particle.Velocity))); 
-        }
-        public static Photon DistanceEjected(Photon Particle) 
-        {
-            return EdgeOFContainmentChecker( new Photon(Particle.Wavelength,Particle.Frequency,Particle.Position,(Particle.LifeSpan * Particle.Velocity)));
-        }
-        public static Particle EdgeOFContainmentChecker<T> (T Particle) where T : Particle
-        {
-            return Particle.Distance >= 10 ? (T)Activator.CreateInstance(typeof(T), Particle.Velocity, Particle.Position, 10) : (T)Activator.CreateInstance(typeof(T), Particle.Velocity, Particle.Position, Particle.Distance);
-        }
-        public static Photon EdgeOFContainmentChecker (Photon Particle)
-        {
-            return Particle.Distance >= 10 ? new Photon(Particle.Wavelength, Particle.Frequency, Particle.Position,10) : new Photon(Particle.Wavelength, Particle.Frequency, Particle.Position, Particle.Distance);
-        }
-
-
         public static Particle AdditionOfVectorsForRepulsion <T>(Vector3D StartingPosition,T P1, T P2) where T : Particle
         {
             return (T)Activator.CreateInstance(P1.GetType(),P1.Velocity , Vector3D.Add(StartingPosition,Vector3D.Add(P1.Position, P2.Position)));  //Not dealing with genircs, but dealing with the acctual type passed in 

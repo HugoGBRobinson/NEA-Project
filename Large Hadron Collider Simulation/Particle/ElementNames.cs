@@ -42,6 +42,7 @@ namespace Particles
 
 
             var  elements = new Dictionary<int, String>();
+            elements.Add(0, "Neutron");
             elements.Add(1, "Hydrogen");
             elements.Add(2, "Helium");
             elements.Add(3, "Lithium");

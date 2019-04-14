@@ -20,10 +20,5 @@ namespace UnitTestProject1
             var Outputs2 = Collisions.CollisionFuntions.TotalRestmass(FList.New<double>(1E-50,1E-50));
             Assert.AreEqual(2E-50, Outputs2);
         }
-        [TestMethod]
-        public void ErrorCase()
-        {
-            var Outputs2 = Collisions.CollisionFuntions.TotalRestmass(FList.New<double>());
-        }
     }
 }

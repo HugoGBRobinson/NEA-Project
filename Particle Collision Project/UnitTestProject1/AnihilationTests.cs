@@ -8,10 +8,14 @@ namespace UnitTestProject1
     public class AnihilationTests
     {
         [TestMethod]
-        public void OverTheSpeedOFLight()
+        public void HappyCase()
         {
-            var a = Collisions.CollisionFuntions.Annialation(new Particles.Proton(300000001), new Particles.Antiproton(299999999), FRandom.Seed(1, 1));
-            Assert.AreEqual("That is faster than the speed of light, which is not allowed", a);
+            var a = Collisions.CollisionFuntions.Annialation(new Particles.Proton(10000), new Particles.Antiproton(55560), FRandom.Seed(1, 1));
+            Assert.AreEqual("6.60639434893911E-16", Convert.ToString(a.Item1.Wavelength));
+            Assert.AreEqual("4.54105498634328E+23", Convert.ToString(a.Item1.Frequency));
+            Assert.AreEqual(new Particles.Photon().GetType(), a.Item1.GetType());
+            Assert.AreEqual(new Particles.Photon().GetType(), a.Item2.GetType());
         }
+        
     }
 }
