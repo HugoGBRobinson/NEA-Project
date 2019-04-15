@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Particle Collision Project", "Particle Collision Project\Particle Collision Project.csproj", "{42B24572-8B03-433E-AFE7-B7BE83F6E779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleProgram", "\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Large Hadron Collider Simulation\Particle\ParticleProgram.csproj", "{4EA6B460-5542-4E16-9B13-3A51C2AF640B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collisions", "Collisions\Collisions.csproj", "{E65CC24A-F6CD-4FD8-9DE9-67D99632CA2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collision Function Tests", "UnitTestProject1\Collision Function Tests.csproj", "{9D725FAF-CAA5-49D9-B0ED-F7BFF8783EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleProgram", "Particle\ParticleProgram.csproj", "{4EA6B460-5542-4E16-9B13-3A51C2AF640B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{42B24572-8B03-433E-AFE7-B7BE83F6E779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42B24572-8B03-433E-AFE7-B7BE83F6E779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42B24572-8B03-433E-AFE7-B7BE83F6E779}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E65CC24A-F6CD-4FD8-9DE9-67D99632CA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E65CC24A-F6CD-4FD8-9DE9-67D99632CA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E65CC24A-F6CD-4FD8-9DE9-67D99632CA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{9D725FAF-CAA5-49D9-B0ED-F7BFF8783EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D725FAF-CAA5-49D9-B0ED-F7BFF8783EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D725FAF-CAA5-49D9-B0ED-F7BFF8783EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA6B460-5542-4E16-9B13-3A51C2AF640B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

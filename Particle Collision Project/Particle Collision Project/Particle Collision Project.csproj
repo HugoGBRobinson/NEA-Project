@@ -58,7 +58,7 @@
       <Project>{e65cc24a-f6cd-4fd8-9de9-67d99632ca2b}</Project>
       <Name>Collisions</Name>
     </ProjectReference>
-    <ProjectReference Include="\\Mac\Home\Documents\A levels\Computer Science\NEA Project\Large Hadron Collider Simulation\Particle\ParticleProgram.csproj">
+    <ProjectReference Include="..\Particle\ParticleProgram.csproj">
       <Project>{4ea6b460-5542-4e16-9b13-3a51c2af640b}</Project>
       <Name>ParticleProgram</Name>
     </ProjectReference>

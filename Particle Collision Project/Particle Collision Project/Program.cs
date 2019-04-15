@@ -137,11 +137,7 @@ namespace Particle_Collision_Project
                                     Entered2 = true;
                                 }
                             }
-                                        
-                            
-                        
-                       
-                         
+
                         Tuple<Photon,Photon> AnihilationOutput = null;
                         Console.Clear();
                         switch (answer)
